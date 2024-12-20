@@ -1,12 +1,15 @@
 package com.aklimets.arrays.max_product_of_2_nums;
 
-import com.aklimets.arrays.AbstractArraysLearningTask;
 import com.aklimets.util.Generator;
+import com.aklimets.util.LearningTask;
 
-public class MaxProductOfTwo extends AbstractArraysLearningTask {
+public class MaxProductOfTwo extends LearningTask<int[]> {
 
-    public MaxProductOfTwo(Generator<int[]> generator) {
-        super(generator);
+    public MaxProductOfTwo() {
+    }
+
+    public MaxProductOfTwo(Generator generator) {
+        super(generator, a -> a);
     }
 
     @Override
@@ -27,6 +30,9 @@ public class MaxProductOfTwo extends AbstractArraysLearningTask {
 
     @Override
     protected int[] solve(int[] input) {
+        if (input.length < 2) {
+            return new int[]{0};
+        }
         int min1 = Integer.MAX_VALUE, min2 = Integer.MAX_VALUE;
         int max1 = Integer.MIN_VALUE, max2 = Integer.MIN_VALUE;
 

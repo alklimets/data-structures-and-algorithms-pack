@@ -1,8 +1,8 @@
 package com.aklimets.util;
 
-public interface Generator<T> {
+public interface Generator {
 
-    default int[] generateArray() {
+    default int[] generateRandomArray() {
         int[] array = new int[10];
         for (int i = 0; i < array.length; i++) {
             array[i] = (int) (Math.random() * 100) - 50;
@@ -10,5 +10,5 @@ public interface Generator<T> {
         return array;
     }
 
-    T generate();
+    int[] generate();
 }
