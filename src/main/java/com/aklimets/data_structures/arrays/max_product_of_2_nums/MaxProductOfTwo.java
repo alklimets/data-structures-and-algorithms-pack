@@ -1,4 +1,4 @@
-package com.aklimets.arrays.max_product_of_2_nums;
+package com.aklimets.data_structures.arrays.max_product_of_2_nums;
 
 import com.aklimets.util.Generator;
 import com.aklimets.util.LearningTask;

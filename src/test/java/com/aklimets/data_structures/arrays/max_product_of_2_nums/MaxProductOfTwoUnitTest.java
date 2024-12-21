@@ -1,4 +1,4 @@
-package com.aklimets.arrays.max_product_of_2_nums;
+package com.aklimets.data_structures.arrays.max_product_of_2_nums;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
@@ -12,7 +12,6 @@ class MaxProductOfTwoUnitTest {
     private MaxProductOfTwo cut = new MaxProductOfTwo();
 
     @ParameterizedTest
-//    @MethodSource("arrayProvider")
     @CsvFileSource(resources = "/arrays/max_product_of_two.csv", numLinesToSkip = 1)
     public void shouldPassTest_whenSolve_given_input(String input, String expected) {
         // given

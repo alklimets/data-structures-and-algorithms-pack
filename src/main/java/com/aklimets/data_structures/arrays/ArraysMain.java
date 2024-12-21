@@ -1,6 +1,6 @@
-package com.aklimets.arrays;
+package com.aklimets.data_structures.arrays;
 
-import com.aklimets.arrays.max_product_of_2_nums.MaxProductOfTwo;
+import com.aklimets.data_structures.arrays.max_product_of_2_nums.MaxProductOfTwo;
 import com.aklimets.util.LearningTask;
 
 import java.util.List;
