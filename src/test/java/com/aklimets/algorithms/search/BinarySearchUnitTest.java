@@ -1,5 +1,6 @@
 package com.aklimets.algorithms.search;
 
+import com.aklimets.data_structures.arrays.search.BinarySearch;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 

@@ -1,4 +1,4 @@
-package com.aklimets.algorithms.euclid;
+package com.aklimets.algorithms.divide_and_concur.euclid;
 
 public class GreatestCommonDivisor {
 

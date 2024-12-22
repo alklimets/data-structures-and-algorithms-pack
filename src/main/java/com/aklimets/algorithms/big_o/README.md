@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Big O Notation Overview</title>
-</head>
-<body>
-    <h1>Overview of Big O Notation</h1>
-    <p>Big O notation is a mathematical concept used to describe the <strong>performance</strong> or <strong>complexity</strong> of an algorithm, specifically in terms of its <strong>time complexity</strong> or <strong>space complexity</strong>. It expresses the worst-case scenario as a function of the input size <code>n</code>, allowing us to analyze how the algorithm's running time or space requirements grow as the input size increases.</p>
+<h1>Overview of Big O Notation</h1>
+<p>Big O notation is a mathematical concept used to describe the <strong>performance</strong> or <strong>complexity</strong> of an algorithm, specifically in terms of its <strong>time complexity</strong> or <strong>space complexity</strong>. It expresses the worst-case scenario as a function of the input size <code>n</code>, allowing us to analyze how the algorithm's running time or space requirements grow as the input size increases.</p>
 
 <h2>Key Points</h2>
 <ul>
@@ -88,7 +80,3 @@
         </ul>
     </li>
 </ul>
-
-
-</body>
-</html>

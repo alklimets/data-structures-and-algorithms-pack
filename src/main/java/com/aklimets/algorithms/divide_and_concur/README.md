@@ -1,8 +1,8 @@
-<h1>Divide and Conquer Algorithm</h1>
+<h1>Divide and Conquer </h1>
 
 <h2>Introduction</h2>
 <p>
-    The **Divide and Conquer** algorithm is a problem-solving strategy that involves breaking down a large problem into smaller subproblems, solving each subproblem recursively, and combining the results to solve the original problem.
+    The Divide and Conquer is a problem-solving strategy that involves breaking down a large problem into smaller subproblems, solving each subproblem recursively, and combining the results to solve the original problem.
 </p>
 
 <h2>Steps of Divide and Conquer</h2>
@@ -14,7 +14,7 @@
 
 <h2>Example</h2>
 <p>
-    A classic example is **Merge Sort**. In merge sort, the array is recursively divided into halves, each half is sorted, and then the sorted halves are merged to produce the final sorted array.
+    A classic example is Merge Sort. In merge sort, the array is recursively divided into halves, each half is sorted, and then the sorted halves are merged to produce the final sorted array.
 </p>
 
 <h2>Advantages</h2>

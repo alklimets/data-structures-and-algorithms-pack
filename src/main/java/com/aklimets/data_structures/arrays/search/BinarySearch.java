@@ -1,4 +1,4 @@
-package com.aklimets.algorithms.search;
+package com.aklimets.data_structures.arrays.search;
 
 public class BinarySearch  {
 

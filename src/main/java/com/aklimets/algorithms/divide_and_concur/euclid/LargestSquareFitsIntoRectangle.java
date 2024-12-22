@@ -1,6 +1,6 @@
-package com.aklimets.challenges.divide_and_concur;
+package com.aklimets.algorithms.divide_and_concur.euclid;
 
-import com.aklimets.algorithms.euclid.GreatestCommonDivisor;
+import com.aklimets.algorithms.divide_and_concur.euclid.GreatestCommonDivisor;
 
 public class LargestSquareFitsIntoRectangle {
 
