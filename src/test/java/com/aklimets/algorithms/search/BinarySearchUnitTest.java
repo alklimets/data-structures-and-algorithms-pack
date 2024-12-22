@@ -9,11 +9,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class BinarySearchUnitTest {
 
-    private BinarySearch cut = new BinarySearch();
+    private final BinarySearch cut = new BinarySearch();
 
     @ParameterizedTest
     @CsvFileSource(resources = "/search/search_array.csv", numLinesToSkip = 1)
-    public void shouldPassTest_whenSolve_given_input(String input, int item, int expected) {
+    public void shouldPassTest_whenSearch_given_input(String input, int item, int expected) {
         // given
         int[] givenInput = splitInput(input);
 

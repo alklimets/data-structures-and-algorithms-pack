@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class MaxProductOfTwoUnitTest {
 
-    private MaxProductOfTwo cut = new MaxProductOfTwo();
+    private final MaxProductOfTwo cut = new MaxProductOfTwo();
 
     @ParameterizedTest
     @CsvFileSource(resources = "/arrays/max_product_of_two.csv", numLinesToSkip = 1)

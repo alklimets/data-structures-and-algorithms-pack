@@ -1,8 +1,7 @@
 package com.aklimets.algorithms.search;
 
-public class BinarySearch implements SearchTask  {
+public class BinarySearch  {
 
-    @Override
     public int search(int[] input, int item) {
         if (input.length == 0) return -1;
         int left = 0, right = input.length - 1;
