@@ -13,7 +13,7 @@ class RecursiveArraySumUnitTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/arrays/array_sum.csv", numLinesToSkip = 1)
-    public void shouldPassTest_whenSolve_given_input(String input, int expected) {
+    public void shouldPassTest_whenSolve_givenInput(String input, int expected) {
         // given
         int[] inputArray = TestHelper.splitInput(input);
 

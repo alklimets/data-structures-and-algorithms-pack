@@ -12,7 +12,7 @@ class QuickSortUnitTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/arrays/sort/sort_array.csv", numLinesToSkip = 1)
-    public void shouldPassTest_whenSearch_given_input(String input, String expected) {
+    public void shouldPassTest_whenSort_givenInput(String input, String expected) {
         // given
         int[] givenInput = TestHelper.splitInput(input);
         int[] expectedOutput = TestHelper.splitInput(expected);
@@ -22,6 +22,20 @@ class QuickSortUnitTest {
 
         // then
         assertThat(actual).isEqualTo(expectedOutput);
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(resources = "/arrays/sort/sort_array.csv", numLinesToSkip = 1)
+    public void shouldPassTest_whenInPlaceSort_givenInput(String input, String expected) {
+        // given
+        int[] givenInput = TestHelper.splitInput(input);
+        int[] expectedOutput = TestHelper.splitInput(expected);
+
+        // when
+        cut.inPlaceSort(givenInput, 0, givenInput.length - 1);
+
+        // then
+        assertThat(givenInput).isEqualTo(expectedOutput);
     }
 
 }

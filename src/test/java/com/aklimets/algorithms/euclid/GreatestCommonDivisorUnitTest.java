@@ -13,7 +13,7 @@ class GreatestCommonDivisorUnitTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/euclid/GCD_data.csv", numLinesToSkip = 1)
-    public void shouldPassTest_whenSolve_given_input(int a, int b, int expected) {
+    public void shouldPassTest_whenSolve_givenInput(int a, int b, int expected) {
         // given
         // when
         int actual = cut.solve(a, b);

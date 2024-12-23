@@ -12,7 +12,7 @@ class MaxProductOfTwoUnitTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/arrays/max_product_of_two.csv", numLinesToSkip = 1)
-    public void shouldPassTest_whenSolve_given_input(String input, String expected) {
+    public void shouldPassTest_whenSolve_givenInput(String input, String expected) {
         // given
         int[] givenInput = splitInput(input);
         int[] expectedValue = splitInput(expected);

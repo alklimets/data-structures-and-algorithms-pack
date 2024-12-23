@@ -9,6 +9,7 @@ import java.util.stream.Stream;
 
 public class QuickSort {
 
+    // recursive example with additional memory usage
     public int[] sort(int[] input) {
         if (input.length <= 1) {
             return input;
@@ -31,4 +32,32 @@ public class QuickSort {
                 Arrays.stream(sort(greaterArray))
         ).flatMapToInt(i -> i).toArray();
     }
+
+    // in place sort with efficient memory usage
+    public void inPlaceSort(int[] input, int left, int right) {
+        if (left < right) {
+            int pivot = partition(input, left, right);
+            inPlaceSort(input, left, pivot - 1);
+            inPlaceSort(input, pivot + 1, right);
+        }
+    }
+
+    private int partition(int[] input, int left, int right) {
+        int i = left;
+        int pivot = input[right];
+        for (int j = left; j < right; j++) {
+            if (input[j] <= pivot) {
+                swap(input, j, i++);
+            }
+        }
+        swap(input, i, right);
+        return i;
+    }
+
+    private void swap(int[] input, int a, int b) {
+        int buff = input[a];
+        input[a] = input[b];
+        input[b] = buff;
+    }
+
 }
