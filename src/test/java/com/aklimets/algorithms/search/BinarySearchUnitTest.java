@@ -12,7 +12,7 @@ class BinarySearchUnitTest {
     private final BinarySearch cut = new BinarySearch();
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/search/search_array.csv", numLinesToSkip = 1)
+    @CsvFileSource(resources = "/arrays/search/search_array.csv", numLinesToSkip = 1)
     public void shouldPassTest_whenSearch_given_input(String input, int item, int expected) {
         // given
         int[] givenInput = TestHelper.splitInput(input);
