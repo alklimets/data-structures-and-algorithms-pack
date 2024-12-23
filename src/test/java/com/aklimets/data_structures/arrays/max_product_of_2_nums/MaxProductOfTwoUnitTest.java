@@ -3,8 +3,7 @@ package com.aklimets.data_structures.arrays.max_product_of_2_nums;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
-import java.util.Arrays;
-
+import static com.aklimets.helper.TestHelper.splitInput;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class MaxProductOfTwoUnitTest {
@@ -23,13 +22,6 @@ class MaxProductOfTwoUnitTest {
 
         // then
         assertThat(actual).isEqualTo(expectedValue);
-    }
-
-    private int[] splitInput(String input) {
-        return Arrays.stream(input.split(","))
-                .filter(s -> !s.isEmpty())
-                .mapToInt(Integer::parseInt)
-                .toArray();
     }
 
 }
