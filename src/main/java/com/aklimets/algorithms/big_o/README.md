@@ -80,3 +80,30 @@
         </ul>
     </li>
 </ul>
+
+<ol>
+    <li>
+        <strong>Constants Are Ignored for Big-O:</strong> 
+        In asymptotic analysis, we ignore constants because Big-O focuses on growth rates as input size increases. For example, <code>O(2n log n)</code> and <code>O(n log n)</code> are treated the same since the constant <code>2</code> is negligible for large <code>n</code>.
+    </li>
+    <li>
+        <strong>When Comparing Same Complexities:</strong> 
+        If two algorithms have the same Big-O time complexity, the one with a <strong>smaller constant factor</strong> or fewer operations per iteration will generally run faster.
+    </li>
+    <li>
+        <strong>Quick Sort’s Edge Over Merge Sort:</strong> 
+        In the average case, Quick Sort often outperforms Merge Sort because:
+        <ul>
+            <li>Quick Sort doesn’t require extra memory for merging (in-place sorting).</li>
+            <li>Its partitioning logic typically has lower constant overhead compared to the merging process in Merge Sort.</li>
+        </ul>
+    </li>
+</ol>
+
+
+
+
+
+
+
+

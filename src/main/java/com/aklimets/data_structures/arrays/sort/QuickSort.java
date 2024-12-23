@@ -3,6 +3,7 @@ package com.aklimets.data_structures.arrays.sort;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -13,10 +14,12 @@ public class QuickSort {
             return input;
         }
 
-        int pivot = input[0];
+        int pivotIndex = new Random().nextInt(input.length);
+        int pivot = input[pivotIndex];
         List<Integer> smaller = new ArrayList<>();
         List<Integer> greater = new ArrayList<>();
-        for (int i = 1; i < input.length; i++) {
+        for (int i = 0; i < input.length; i++) {
+            if (i == pivotIndex) continue;
             if (input[i] <= pivot) smaller.add(input[i]);
             if (input[i] > pivot) greater.add(input[i]);
         }
