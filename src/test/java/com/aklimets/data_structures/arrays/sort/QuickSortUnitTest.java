@@ -14,8 +14,8 @@ class QuickSortUnitTest {
     @CsvFileSource(resources = "/arrays/sort/sort_array.csv", numLinesToSkip = 1)
     public void shouldPassTest_whenSort_givenInput(String input, String expected) {
         // given
-        int[] givenInput = TestHelper.splitInput(input);
-        int[] expectedOutput = TestHelper.splitInput(expected);
+        int[] givenInput = TestHelper.splitInputToArray(input);
+        int[] expectedOutput = TestHelper.splitInputToArray(expected);
 
         // when
         int[] actual = cut.sort(givenInput);
@@ -28,8 +28,8 @@ class QuickSortUnitTest {
     @CsvFileSource(resources = "/arrays/sort/sort_array.csv", numLinesToSkip = 1)
     public void shouldPassTest_whenInPlaceSort_givenInput(String input, String expected) {
         // given
-        int[] givenInput = TestHelper.splitInput(input);
-        int[] expectedOutput = TestHelper.splitInput(expected);
+        int[] givenInput = TestHelper.splitInputToArray(input);
+        int[] expectedOutput = TestHelper.splitInputToArray(expected);
 
         // when
         cut.inPlaceSort(givenInput, 0, givenInput.length - 1);

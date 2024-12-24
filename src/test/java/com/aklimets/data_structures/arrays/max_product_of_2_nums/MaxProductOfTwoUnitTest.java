@@ -3,7 +3,7 @@ package com.aklimets.data_structures.arrays.max_product_of_2_nums;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
-import static com.aklimets.helper.TestHelper.splitInput;
+import static com.aklimets.helper.TestHelper.splitInputToArray;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class MaxProductOfTwoUnitTest {
@@ -14,8 +14,8 @@ class MaxProductOfTwoUnitTest {
     @CsvFileSource(resources = "/arrays/max_product_of_two.csv", numLinesToSkip = 1)
     public void shouldPassTest_whenSolve_givenInput(String input, String expected) {
         // given
-        int[] givenInput = splitInput(input);
-        int[] expectedValue = splitInput(expected);
+        int[] givenInput = splitInputToArray(input);
+        int[] expectedValue = splitInputToArray(expected);
 
         // when
         int[] actual = cut.solve(givenInput);

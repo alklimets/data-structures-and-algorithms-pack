@@ -14,7 +14,7 @@ class RecursiveBinarySearchUnitTest {
     @CsvFileSource(resources = "/arrays/search/search_array.csv", numLinesToSkip = 1)
     public void shouldPassTest_whenSearch_givenInput(String input, int item, int expected) {
         // given
-        int[] givenInput = TestHelper.splitInput(input);
+        int[] givenInput = TestHelper.splitInputToArray(input);
 
         // when
         int actual = cut.search(givenInput, 0, givenInput.length - 1, item);

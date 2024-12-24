@@ -14,7 +14,7 @@ class RecursiveBiggestNumberUnitTest {
     @CsvFileSource(resources = "/arrays/biggest_number.csv", numLinesToSkip = 1)
     public void shouldPassTest_whenSolve_givenInput(String input, int expected) {
         // given
-        int[] inputArray = TestHelper.splitInput(input);
+        int[] inputArray = TestHelper.splitInputToArray(input);
 
         // when
         int actual = cut.solve(inputArray);
