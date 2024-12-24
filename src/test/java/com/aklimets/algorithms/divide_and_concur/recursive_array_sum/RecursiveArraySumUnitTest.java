@@ -10,7 +10,6 @@ class RecursiveArraySumUnitTest {
 
     private final RecursiveArraySum cut = new RecursiveArraySum();
 
-
     @ParameterizedTest
     @CsvFileSource(resources = "/arrays/array_sum.csv", numLinesToSkip = 1)
     public void shouldPassTest_whenSolve_givenInput(String input, int expected) {
