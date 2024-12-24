@@ -1,0 +1,6 @@
+graph, sequence, expected
+"B,A;C,A", "ABC", true
+"B,A;C,A", "ACB", true
+"B,A;C,A", "BAC", false
+"B,A;C,A", "AB", true
+"B,A;C,A", "BA", false
