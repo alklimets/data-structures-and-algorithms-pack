@@ -1,4 +1,6 @@
-package com.aklimets.data_structures.graphs.tpological_sort;
+package com.aklimets.data_structures.graphs.topological_sort;
+
+import com.aklimets.data_structures.graphs.view.GraphView;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -6,11 +8,7 @@ import java.util.stream.Collectors;
 public class TopologicalSort {
 
     public String sort(List<String[]> dependencies) {
-        Map<String, List<String>> graph = new HashMap<>();
-        dependencies.forEach(item -> {
-            graph.computeIfAbsent(item[0], k -> new ArrayList<>()).add(item[1]);
-        });
-
+        Map<String, List<String>> graph = new GraphView().toAdjacencyList(dependencies);
         Map<String, Integer> nodesWithIncomes = new HashMap<>();
         for (String[] dependency : dependencies) {
             if (!nodesWithIncomes.containsKey(dependency[0])) {

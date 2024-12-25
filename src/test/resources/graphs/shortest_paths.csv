@@ -1,0 +1,6 @@
+start, end, expected
+"A", "E", "ACBE"
+"A", "A", "A"
+"C", "E", "CBE"
+"C", "D", "CBD"
+"A", "D", "ACBD"
