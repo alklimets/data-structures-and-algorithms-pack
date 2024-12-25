@@ -7,19 +7,27 @@ import java.util.stream.Collectors;
 
 public class KahnAlgorithm {
 
+    private final GraphView graphView = new GraphView();
+
     public List<String> sort(List<String[]> dependencies) {
-        Map<String, List<String>> graph = new GraphView().toAdjacencyList(dependencies);
+        return sort(graphView.toAdjacencyList(dependencies));
+    }
+
+    public List<String> sort(Map<String, List<String>> graph) {
         Map<String, Integer> nodesWithIncomes = new HashMap<>();
         Set<String> nodes = new HashSet<>();
-        for (String[] dependency : dependencies) {
-            nodes.add(dependency[0]);
-            nodes.add(dependency[1]);
 
-            if (!nodesWithIncomes.containsKey(dependency[0])) {
-                nodesWithIncomes.put(dependency[0], 0);
+        graph.forEach((node, value) -> {
+            for (String relative : value) {
+                nodes.add(relative);
+                nodes.add(node);
+
+                if (!nodesWithIncomes.containsKey(node)) {
+                    nodesWithIncomes.put(node, 0);
+                }
+                nodesWithIncomes.compute(relative, (k, v) -> v == null ? 1 : v + 1);
             }
-            nodesWithIncomes.compute(dependency[1], (item, count) -> count == null ? 1 : count + 1);
-        }
+        });
 
         List<String> result = new ArrayList<>();
         Queue<String> queue = nodesWithIncomes.entrySet()
@@ -33,12 +41,10 @@ public class KahnAlgorithm {
             result.add(node);
 
             for (String relative : graph.getOrDefault(node, List.of())) {
-                nodesWithIncomes.compute(relative, (k, v) -> v - 1);
-                if (nodesWithIncomes.get(relative) == 0) {
+                if (nodesWithIncomes.compute(relative, (k, v) -> v - 1) == 0) {
                     queue.add(relative);
                 }
             }
-            System.out.println();
         }
 
         return result.size() == nodes.size() ? result : null;

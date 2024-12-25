@@ -10,16 +10,15 @@ public class BreadthFirstSearch {
         Set<String> checked = new HashSet<>();
         queue.add(start);
         while (!queue.isEmpty()) {
-            String item = queue.poll();
-            if (item.equals(finish)) return true;
-            if (checked.contains(item)) continue;
-            checked.add(item);
-            List<String> relatives = graph.getOrDefault(item, List.of());
-            queue.addAll(relatives);
+            String node = queue.poll();
+            if (checked.contains(node)) continue;
+            if (node.equals(finish)) return true;
+            checked.add(node);
+            queue.addAll(graph.getOrDefault(node, List.of()));
         }
-
         return false;
     }
+
 
     private static class Pair {
         String value;
@@ -32,18 +31,17 @@ public class BreadthFirstSearch {
     }
 
     public int shortestPath(String start, String finish, Map<String, List<String>> graph) {
+        if (start.equals(finish)) return 0;
         Queue<Pair> queue = new LinkedList<>();
         Set<String> checked = new HashSet<>();
         queue.add(new Pair(start, 0));
 
         while (!queue.isEmpty()) {
-            Pair current = queue.poll();
-            if (current.value.equals(finish)) return current.length;
-            if (checked.contains(current.value)) continue;
-            checked.add(current.value);
-
-            List<String> relatives = graph.getOrDefault(current.value, List.of());
-            relatives.forEach(i -> queue.add(new Pair(i, current.length + 1)));
+            Pair pair = queue.poll();
+            if (pair.value.equals(finish)) return pair.length;
+            if (checked.contains(pair.value)) continue;
+            checked.add(pair.value);
+            graph.getOrDefault(pair.value, List.of()).forEach(item -> queue.add(new Pair(item, pair.length + 1)));
         }
         return -1;
     }
