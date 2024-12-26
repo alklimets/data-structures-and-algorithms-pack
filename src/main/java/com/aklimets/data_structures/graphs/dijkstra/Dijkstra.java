@@ -7,14 +7,13 @@ import java.util.stream.Collectors;
 public class Dijkstra {
 
     public Map<String, Integer> search(Map<String, Map<String, Integer>> graph, String start) {
-        Map<String, Integer> result = graph.keySet().stream().collect(Collectors.toMap(Function.identity(), a -> Integer.MAX_VALUE));
+        Map<String, Integer> result = new HashMap<>();
         result.put(start, 0);
 
         PriorityQueue<Map.Entry<String, Integer>> queue = new PriorityQueue<>(Comparator.comparingInt(Map.Entry::getValue));
         queue.offer(new AbstractMap.SimpleEntry<>(start, 0));
 
         Set<String> visited = new HashSet<>();
-
         while (!queue.isEmpty()) {
             Map.Entry<String, Integer> entry = queue.poll();
             String node = entry.getKey();
@@ -22,25 +21,18 @@ public class Dijkstra {
 
             if (visited.contains(node)) {
                 continue;
-            } else {
-                visited.add(node);
             }
 
-            Map<String, Integer> relatives = graph.getOrDefault(node, new HashMap<>());
-            for (Map.Entry<String, Integer> relativeNode : relatives.entrySet()) {
-                String relative = relativeNode.getKey();
-                Integer relativeWeight = relativeNode.getValue();
-
-                int currentRelativePathWeight = result.getOrDefault(relative, Integer.MAX_VALUE);
-                int offeredWeight = weight + relativeWeight;
-                if (weight + relativeWeight < currentRelativePathWeight) {
+            visited.add(node);
+            graph.getOrDefault(node, new HashMap<>()).forEach((relative, relWeight) -> {
+                int offeredWeight = weight + relWeight;
+                int actualRelativeWeight = result.getOrDefault(relative, Integer.MAX_VALUE);
+                if (offeredWeight < actualRelativeWeight) {
                     result.put(relative, offeredWeight);
-                    queue.offer(new AbstractMap.SimpleEntry<>(relative, result.getOrDefault(relative, Integer.MAX_VALUE)));
+                    queue.offer(new AbstractMap.SimpleEntry<>(relative, offeredWeight));
                 }
-
-            }
+            });
         }
-
         return result;
     }
 
