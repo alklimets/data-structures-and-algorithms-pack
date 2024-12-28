@@ -12,7 +12,7 @@ class MinCostClimbingStairsUnitTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/dynamic_programming/min_costs_climbing_stairs.csv", numLinesToSkip = 1)
-    public void shouldPassTest_whenClimbStairs_givenInput(String input, int expected) {
+    public void shouldPassTest_whenMinCostClimbStairs_givenInput(String input, int expected) {
         // given
         int[] costs = TestHelper.splitInputToArray(input);
 
