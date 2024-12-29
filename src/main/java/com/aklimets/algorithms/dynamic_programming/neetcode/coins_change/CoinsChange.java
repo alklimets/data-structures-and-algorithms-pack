@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class CoinsChange {
 
-    HashMap<Integer, Integer> memo = new HashMap<>();
+    Map<Integer, Integer> memo = new HashMap<>();
 
     public int dfs(int amount, int[] coins) {
         if (amount == 0) return 0;
@@ -13,7 +13,7 @@ public class CoinsChange {
             return memo.get(amount);
         }
 
-        int min = Integer.MAX_VALUE;
+        int min = 1_000_000;
         for (int coin : coins) {
             if (amount >= coin) {
                 int res = dfs(amount - coin, coins);
@@ -27,10 +27,12 @@ public class CoinsChange {
 
     public int coinChange(int[] coins, int amount) {
         int minCoins = dfs(amount, coins);
-        return minCoins == Integer.MAX_VALUE ? -1 : minCoins;
+        return minCoins == 1_000_000 ? -1 : minCoins;
     }
 
     public static void main(String[] args) {
-        System.out.println(new CoinsChange().coinChange(new int[] {1,5,10}, 12));
+        System.out.println(new CoinsChange().coinChange(new int[]{1, 5, 10}, 12));
+        System.out.println(new CoinsChange().coinChange(new int[]{1, 2}, 6));
+        System.out.println(new CoinsChange().coinChange(new int[]{2}, 3));
     }
 }
