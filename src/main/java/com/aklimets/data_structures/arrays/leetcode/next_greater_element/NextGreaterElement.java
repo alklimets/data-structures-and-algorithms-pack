@@ -74,8 +74,9 @@ public class NextGreaterElement {
     }
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString( nextGreaterElement(new int[] {1,3,4,2,5})));
-        System.out.println(Arrays.toString( nextGreaterElement(new int[] {1,2,5,4,3})));
-        System.out.println(Arrays.toString( nextGreaterElement(new int[] {1,2,5,4,3, 6})));
+        System.out.println(Arrays.toString(nextGreaterElement(new int[]{1, 3, 4, 2, 5})));
+        System.out.println(Arrays.toString(nextGreaterElement(new int[]{1, 2, 5, 4, 3})));
+        System.out.println(Arrays.toString(nextGreaterElement(new int[]{1, 2, 5, 4, 3, 6})));
+        System.out.println(Arrays.toString(nextGreaterElement(new int[]{1, 2, 3, 4})));
     }
 }
