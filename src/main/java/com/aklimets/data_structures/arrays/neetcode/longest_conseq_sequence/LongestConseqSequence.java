@@ -39,7 +39,7 @@ public class LongestConseqSequence {
             items.add(i);
         }
         for (int i : nums) {
-            if (!items.contains(i-1)) {
+            if (!items.contains(i - 1)) {
                 int val = i;
                 int length = 0;
                 while (items.contains(val++)) {
