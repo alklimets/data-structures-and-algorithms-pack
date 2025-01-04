@@ -24,16 +24,10 @@ public class UniquePaths {
     */
 
     public int uniquePaths(int m, int n) {
-        int[][] matrix = new int[m][n];
-        matrix[m - 1][n - 1] = 1;
-        for (int i = m - 2; i >= 0; i--) {
-            matrix[i][n - 1] = 1;
-        }
-        for (int i = n - 2; i >= 0; i--) {
-            matrix[m - 1][i] = 1;
-        }
-        for (int i = m - 2; i >= 0; i--) {
-            for (int j = n - 2; j >= 0; j--) {
+        int[][] matrix = new int[m + 1][n + 1];
+        matrix[m][n - 1] = 1;
+        for (int i = m - 1; i >= 0; i--) {
+            for (int j = n - 1; j >= 0; j--) {
                 matrix[i][j] = matrix[i][j + 1] + matrix[i + 1][j];
             }
         }
