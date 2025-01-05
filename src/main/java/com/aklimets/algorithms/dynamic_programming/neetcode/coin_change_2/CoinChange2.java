@@ -48,8 +48,8 @@ public class CoinChange2 {
                 if (j < coins[i]) {
                     dp[i][j] = dp[i - 1][j];
                 } else {
-                    int prev = dp[i - 1][j];
-                    int rest = dp[i][j - coins[i]];
+                    int prev = dp[i - 1][j]; // all combinations without given coin
+                    int rest = dp[i][j - coins[i]]; // all combinations where we can add the coin the get the result
                     dp[i][j] = prev + rest;
                 }
             }
