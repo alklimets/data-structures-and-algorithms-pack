@@ -1,7 +1,6 @@
 package com.aklimets.data_structures.arrays.neetcode.top_k_frequent;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class TopKFrequent {
 
@@ -42,8 +41,32 @@ public class TopKFrequent {
                 .toArray();
     }
 
-    public static void main(String[] args) {
+    public int[] topKFrequent2(int[] nums, int k) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int num : nums) {
+            map.compute(num, (key, v) -> v == null ? 1 : v + 1);
+        }
+        List<Integer>[] freq = new List[nums.length + 1];
+        for (int i = 0; i < freq.length; i++) {
+            freq[i] = new ArrayList<>();
+        }
 
+        map.forEach((key, value) -> {
+            freq[value].add(key);
+        });
+
+        int[] res = new int[k];
+        for (int i = freq.length - 1; i > 0; i--) {
+            for (Integer fr : freq[i]) {
+                res[--k] = fr;
+                if (k == 0) return res;
+            }
+        }
+        return res;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(Arrays.toString(new TopKFrequent().topKFrequent2(new int[]{1, 2, 2, 3, 3, 3, 4, 4, 4}, 2)));
     }
 
 
