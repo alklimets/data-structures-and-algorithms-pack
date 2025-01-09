@@ -1,4 +1,4 @@
-package com.aklimets.algorithms.greedy.neetcode.max_subarray.jump_game;
+package com.aklimets.algorithms.greedy.neetcode.jump_game;
 
 public class JumpGame {
 
