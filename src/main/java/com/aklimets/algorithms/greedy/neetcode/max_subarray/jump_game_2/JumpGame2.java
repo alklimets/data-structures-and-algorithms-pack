@@ -46,4 +46,22 @@ public class JumpGame2 {
         }
         return res;
     }
+
+    public int jump2(int[] nums) {
+        int l = 0, r = 0, count = 0;
+        while (r < nums.length - 1) {
+            count++;
+            int farest = r, border = r;
+            for (int i = l; i <= r; i++) {
+                farest = Math.max(farest, i + nums[i]);
+            }
+            l = border + 1;
+            r = farest;
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new JumpGame2().jump2(new int[]{6, 5, 1, 1, 4, 1, 2, 3}));
+    }
 }
