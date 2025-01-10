@@ -45,6 +45,24 @@ public class TrappingWater {
         return res;
     }
 
+    // optimal
+    public int trap2(int[] height) {
+        int l = 0, r = height.length - 1, lMax = 0, rMax = 0;
+        int water = 0;
+        while (l < r) {
+            if (height[l] < height[r]) {
+                lMax = Math.max(height[l], lMax);
+                water += lMax - height[l];
+                l++;
+            } else {
+                rMax = Math.max(height[r], rMax);
+                water += rMax - height[r];
+                r--;
+            }
+        }
+        return water;
+    }
+
     public static void main(String[] args) {
         System.out.println(new TrappingWater().trap(new int[] {0,2,0,3,1,0,1,3,2,1}));
     }
