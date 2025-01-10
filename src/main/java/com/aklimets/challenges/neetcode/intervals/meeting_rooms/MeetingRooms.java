@@ -32,13 +32,14 @@ public class MeetingRooms {
         0 <= intervals[i].start < intervals[i].end <= 1,000,000
     */
 
-      public class Interval {
-      public int start, end;
-      public Interval(int start, int end) {
-          this.start = start;
-          this.end = end;
-      }
-  }
+    public class Interval {
+        public int start, end;
+
+        public Interval(int start, int end) {
+            this.start = start;
+            this.end = end;
+        }
+    }
 
     public boolean canAttendMeetings(List<Interval> intervals) {
         Interval[] array = intervals.toArray(Interval[]::new);
