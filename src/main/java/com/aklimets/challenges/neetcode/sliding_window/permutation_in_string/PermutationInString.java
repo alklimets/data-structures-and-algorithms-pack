@@ -1,4 +1,4 @@
-package com.aklimets.challenges.sliding_window.neetcode.permutation_in_string;
+package com.aklimets.challenges.neetcode.sliding_window.permutation_in_string;
 
 import java.util.HashMap;
 import java.util.Map;

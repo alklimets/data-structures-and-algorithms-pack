@@ -1,6 +1,5 @@
-package com.aklimets.challenges.sliding_window.neetcode.minimum_window_substring;
+package com.aklimets.challenges.neetcode.sliding_window.minimum_window_substring;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 

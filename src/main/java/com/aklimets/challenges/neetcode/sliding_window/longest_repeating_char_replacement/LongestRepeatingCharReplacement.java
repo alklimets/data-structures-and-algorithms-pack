@@ -1,4 +1,4 @@
-package com.aklimets.challenges.sliding_window.neetcode.longest_repeating_char_replacement;
+package com.aklimets.challenges.neetcode.sliding_window.longest_repeating_char_replacement;
 
 import java.util.HashMap;
 import java.util.Map;

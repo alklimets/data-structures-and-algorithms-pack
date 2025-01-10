@@ -1,4 +1,4 @@
-package com.aklimets.challenges.sliding_window.neetcode.buy_sell_stock;
+package com.aklimets.challenges.neetcode.sliding_window.buy_sell_stock;
 
 public class BuySellStock {
 
