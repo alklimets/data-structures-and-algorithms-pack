@@ -28,7 +28,7 @@ public class NAndDoubleExist {
         Constraints:
 
         2 <= arr.length <= 500
-        -103 <= arr[i] <= 103
+        -10^3 <= arr[i] <= 10^3
     */
 
     public boolean checkIfExist(int[] arr) {

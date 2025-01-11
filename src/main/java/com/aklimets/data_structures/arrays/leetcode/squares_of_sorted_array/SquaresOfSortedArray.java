@@ -19,8 +19,8 @@ public class SquaresOfSortedArray {
 
         Constraints:
 
-        1 <= nums.length <= 104
-        -104 <= nums[i] <= 104
+        1 <= nums.length <= 10^4
+        -10^4 <= nums[i] <= 10^4
         nums is sorted in non-decreasing order.
     */
 
