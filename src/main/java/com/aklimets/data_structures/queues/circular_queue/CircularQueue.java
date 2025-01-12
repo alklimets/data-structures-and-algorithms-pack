@@ -1,5 +1,7 @@
 package com.aklimets.data_structures.queues.circular_queue;
 
+import java.util.LinkedList;
+
 public class CircularQueue {
 
     /*
