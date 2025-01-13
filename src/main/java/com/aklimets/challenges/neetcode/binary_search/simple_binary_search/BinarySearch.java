@@ -1,4 +1,4 @@
-package com.aklimets.challenges.neetcode.binary_search;
+package com.aklimets.challenges.neetcode.binary_search.simple_binary_search;
 
 public class BinarySearch {
 
