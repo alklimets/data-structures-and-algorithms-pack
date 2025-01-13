@@ -1,5 +1,10 @@
 package com.aklimets.challenges.neetcode.binary_search.search_in_rotated_array;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class SearchInRotatedArray {
 
     /*
