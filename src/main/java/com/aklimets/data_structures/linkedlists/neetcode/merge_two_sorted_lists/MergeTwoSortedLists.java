@@ -38,43 +38,24 @@ public class MergeTwoSortedLists {
     }
 
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        if (list1 == null && list2 == null) {
-            return null;
-        }
-        if (list1 != null && list2 == null) {
-            return list1;
-        }
-        if (list2 != null && list1 == null) {
-            return list2;
-        }
-        ListNode copy1;
-        ListNode copy2;
-        ListNode res;
-        if (list1.val < list2.val) {
-            res = list1;
-            copy1 = list1;
-            copy2 = list2;
-        } else {
-            res = list2;
-            copy1 = list2;
-            copy2 = list1;
-        }
-
-        while (copy1.next != null && copy2 != null) {
-            if (copy2.val < copy1.next.val) {
-                ListNode copy = copy2.next;
-                copy2.next = copy1.next;
-                copy1.next = copy2;
-                copy2 = copy;
-                copy1 = copy1.next;
+        ListNode dummy = new ListNode(0);
+        ListNode next = dummy;
+        while (list1 != null && list2 != null) {
+            if (list1.val < list2.val) {
+                next.next = list1;
+                list1 = list1.next;
             } else {
-                copy1 = copy1.next;
+                next.next = list2;
+                list2 = list2.next;
             }
+            next = next.next;
         }
-        if (copy1.next == null) {
-            copy1.next = copy2;
+        if (list1 != null) {
+            next.next = list1;
+        } else {
+            next.next = list2;
         }
-        return res;
+        return dummy.next;
 
     }
 }
