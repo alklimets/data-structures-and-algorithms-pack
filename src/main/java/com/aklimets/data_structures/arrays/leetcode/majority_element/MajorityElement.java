@@ -27,10 +27,13 @@ public class MajorityElement {
         Integer candidate = null;
 
         for (int num : nums) {
-            if (count == 0) {
+            if (candidate != null && candidate == num) {
+                count++;
+            } else if (count == 0) {
                 candidate = num;
+            } else {
+                count--;
             }
-            count += (candidate == num) ? 1 : -1;
         }
         return candidate;
     }
