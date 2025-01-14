@@ -48,4 +48,29 @@ public class RotateArray {
             index++;
         }
     }
+
+    public void rotate2(int[] nums, int k) {
+        k = k % nums.length;
+        for (int i = 0; i < (nums.length) / 2; i++) {
+            int buff = nums[i];
+            nums[i] = nums[nums.length - i - 1];
+            nums[nums.length - i - 1] = buff;
+        }
+
+        for (int i = 0; i < k / 2; i++) {
+            int buff = nums[i];
+            nums[i] = nums[k - i - 1];
+            nums[k - i - 1] = buff;
+        }
+
+        for (int i = k; i < (k + nums.length) / 2; i++) {
+            int buff = nums[i];
+            nums[i] = nums[nums.length - i - 1 + k];
+            nums[nums.length - i - 1 + k] = buff;
+        }
+    }
+
+    public static void main(String[] args) {
+        new RotateArray().rotate2(new int[] {1,2,3,4,5,6,7}, 2);
+    }
 }
