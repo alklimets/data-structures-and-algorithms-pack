@@ -1,5 +1,7 @@
 package com.aklimets.data_structures.linkedlists.neetcode.reverse_ll;
 
+import com.aklimets.data_structures.linkedlists.neetcode.ListNode;
+
 public class ReverseLinkedList {
 
     /*
@@ -21,14 +23,6 @@ public class ReverseLinkedList {
         0 <= The length of the list <= 1000.
         -1000 <= Node.val <= 1000
     */
-    
-  public class ListNode {
-      int val;
-      ListNode next;
-      ListNode() {}
-      ListNode(int val) { this.val = val; }
-      ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-  }
 
     public ListNode reverseList(ListNode head) {
         ListNode prev = null;

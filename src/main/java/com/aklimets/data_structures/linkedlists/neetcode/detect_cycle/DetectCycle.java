@@ -1,5 +1,7 @@
 package com.aklimets.data_structures.linkedlists.neetcode.detect_cycle;
 
+import com.aklimets.data_structures.linkedlists.neetcode.ListNode;
+
 public class DetectCycle {
 
     /*
@@ -29,13 +31,6 @@ public class DetectCycle {
         index is -1 or a valid index in the linked list.
     */
 
-    public class ListNode {
-        int val;
-        ListNode next;
-        ListNode() {}
-        ListNode(int val) { this.val = val; }
-        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-    }
 
     public boolean hasCycle(ListNode head) {
         ListNode slow = head;
