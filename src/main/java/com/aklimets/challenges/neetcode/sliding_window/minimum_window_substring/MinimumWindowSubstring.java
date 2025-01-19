@@ -68,7 +68,7 @@ public class MinimumWindowSubstring {
     }
 
     public static void main(String[] args) {
-        System.out.println(new MinimumWindowSubstring().minWindow("OUZODYXAZV", "XYZ"));
+        System.out.println(new MinimumWindowSubstring().minWindow("aaflslflsldkalskaaa", "aaa"));
         System.out.println(new MinimumWindowSubstring().minWindow("a", "a"));
         System.out.println(new MinimumWindowSubstring().minWindow("a", "b"));
     }
