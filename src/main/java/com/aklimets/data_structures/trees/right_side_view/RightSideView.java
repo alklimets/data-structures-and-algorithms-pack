@@ -7,7 +7,8 @@ import java.util.*;
 public class RightSideView {
 
     /*
-        You are given the root of a binary tree. Return only the values of the nodes that are visible from the right side of the tree, ordered from top to bottom.
+        You are given the root of a binary tree. Return only the values of the nodes that are visible from the right
+        side of the tree, ordered from top to bottom.
 
         Example 1:
         Input: root = [1,2,3]
