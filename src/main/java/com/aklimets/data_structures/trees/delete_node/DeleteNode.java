@@ -70,4 +70,42 @@ public class DeleteNode {
         }
         return root;
     }
+
+
+    // alternative
+    public TreeNode deleteNode2(TreeNode root, int key) {
+        if (root == null) {
+            return null;
+        }
+
+        if (key < root.val) {
+            root.left = deleteNode2(root.left, key);
+        } else if (key > root.val) {
+            root.right = deleteNode2(root.right, key);
+        } else {
+            if (root.right == null && root.left == null) {
+                return null;
+            }
+
+            if (root.right == null) {
+                return root.left;
+            }
+
+            if (root.left == null) {
+                return root.right;
+            }
+
+            TreeNode max = findMax(root.left);
+            root.val = max.val;
+            root.left = deleteNode2(root.left, max.val);
+        }
+        return root;
+    }
+
+    private TreeNode findMax(TreeNode root) {
+        while (root.right != null) {
+            root = root.right;
+        }
+        return root;
+    }
 }

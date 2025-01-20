@@ -54,4 +54,18 @@ public class InsertIntoBts {
             insert(root.right, val);
         }
     }
+
+
+    // less code
+    public TreeNode insertIntoBST2(TreeNode root, int val) {
+        if (root == null) {
+            return new TreeNode(val);
+        }
+        if (val < root.val) {
+            root.left = insertIntoBST2(root.left, val);
+        } else {
+            root.right = insertIntoBST2(root.right, val);
+        }
+        return root;
+    }
 }
