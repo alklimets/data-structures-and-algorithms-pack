@@ -41,23 +41,18 @@ public class KLargestElementInStreams {
         minHeap = new PriorityQueue<>();
         this.k = k;
         for (int val : nums) {
-            if (minHeap.size() < k) {
-                minHeap.offer(val);
-            } else if (minHeap.peek() <= val) {
+            minHeap.offer(val);
+            if (minHeap.size() > k) {
                 minHeap.poll();
-                minHeap.offer(val);
             }
         }
     }
 
     public int add(int val) {
-        if (minHeap.size() < k) {
-            minHeap.offer(val);
-        } else if (minHeap.peek() <= val) {
+        minHeap.offer(val);
+        if (minHeap.size() > k) {
             minHeap.poll();
-            minHeap.offer(val);
         }
-
         return minHeap.peek();
     }
 }
