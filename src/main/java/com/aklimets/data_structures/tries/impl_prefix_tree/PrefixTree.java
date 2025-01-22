@@ -63,9 +63,8 @@ public class PrefixTree {
                 return false;
             }
             current = current.nodes.get(ch);
-            if (current.isWord) return true;
         }
-        return false;
+        return current.isWord;
     }
 
     public boolean startsWith(String prefix) {
