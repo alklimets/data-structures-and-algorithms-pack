@@ -67,6 +67,32 @@ public class MinimumWindowSubstring {
         return minSubstring;
     }
 
+    public String minWindow2(String source, String given) {
+        if (source.length() < given.length()) return "";
+        Map<Character, Integer> required = new HashMap<>();
+        Map<Character, Integer> window = new HashMap<>();
+
+        for (char ch : given.toCharArray()) {
+            required.compute(ch, (k, v) -> v == null ? 1 : v + 1);
+        }
+        int l = 0, r = 0, matches = 0, lInd = 0, rInd = 0, min = Integer.MAX_VALUE;
+        while (r < source.length()) {
+            window.compute(source.charAt(r), (k, v) -> v == null ? 1 : v + 1);
+            if ((int)window.get(source.charAt(r)) == required.getOrDefault(source.charAt(r), -1)) matches++;
+            while (matches == required.size())  {
+                if (r - l + 1 < min) {
+                    min = r - l + 1;
+                    lInd = l;
+                    rInd = r + 1;
+                }
+                if ((int)required.getOrDefault(source.charAt(l), -1) == window.get(source.charAt(l))) matches--;
+                window.compute(source.charAt(l++), (k, v) -> v - 1);
+            }
+            r++;
+        }
+        return source.substring(lInd, rInd);
+    }
+
     public static void main(String[] args) {
         System.out.println(new MinimumWindowSubstring().minWindow("aaflslflsldkalskaaa", "aaa"));
         System.out.println(new MinimumWindowSubstring().minWindow("a", "a"));

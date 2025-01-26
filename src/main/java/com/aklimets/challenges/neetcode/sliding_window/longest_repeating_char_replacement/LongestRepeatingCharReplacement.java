@@ -54,7 +54,32 @@ public class LongestRepeatingCharReplacement {
         return max;
     }
 
+    public int characterReplacement2(String s, int k) {
+        if (s.length() == 1) return 1;
+        int max = 0;
+        int l = 0, r = 0;
+        int[] counter = new int[26];
+        int maxFreq = 0;
+
+        while (r < s.length()) {
+            counter[s.charAt(r) - 'A']++;
+            maxFreq = Math.max(maxFreq, counter[s.charAt(r) - 'A']);
+
+            int windowLength = r - l + 1;
+
+            if (windowLength - maxFreq <= k) {
+                max = Math.max(max, windowLength);
+                r++;
+            } else {
+                counter[s.charAt(l++) - 'A']--;
+                counter[s.charAt(r) - 'A']--;
+            }
+        }
+
+        return max;
+    }
+
     public static void main(String[] args) {
-        System.out.println(new LongestRepeatingCharReplacement().characterReplacement("AABABBA", 1));
+        System.out.println(new LongestRepeatingCharReplacement().characterReplacement2("AABBBAAABAAAAABA", 3));
     }
 }
