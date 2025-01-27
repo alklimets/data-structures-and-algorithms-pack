@@ -38,8 +38,7 @@ public class MaxProductSubarray {
     public int maxProduct(int[] nums, int start, int finish) {
         if (start == finish) return nums[start];
         if (memo.containsKey(getKey(start, finish))) {
-            System.out.println("Checked " + start + " " + finish);
-            return memo.get(getKey(start,finish));
+            return memo.get(getKey(start, finish));
         }
         int left = maxProduct(nums, start, finish - 1);
         int right = maxProduct(nums, start + 1, finish);
@@ -52,12 +51,36 @@ public class MaxProductSubarray {
         return min;
     }
 
+    public int maxProduct2(int[] nums) {
+        int max = Integer.MIN_VALUE;
+        int positiveTrack = 1;
+        int negativeTrack = 1;
+        for (int num : nums) {
+            if (num == 0) {
+                positiveTrack = 1;
+                negativeTrack = 1;
+                max = Math.max(max, 0);
+            } else {
+                positiveTrack *= num;
+                negativeTrack *= num;
+                max = Math.max(max, Math.max(positiveTrack, negativeTrack));
+                if (positiveTrack < 0) {
+                    int buf = positiveTrack;
+                    positiveTrack = Math.max(1, negativeTrack);
+                    negativeTrack = buf;
+                }
+
+            }
+        }
+        return max;
+    }
+
     private String getKey(int s, int f) {
         return s + "#" + f;
     }
 
     public static void main(String[] args) {
-        System.out.println(new MaxProductSubarray().maxProduct(new int[] {1,2,-3,4, 8, 9, 1, 0, 5}));
+        System.out.println(new MaxProductSubarray().maxProduct2(new int[]{1, 2, -3, 4, 8, 9, 1, 0, 5}));
         System.out.println();
     }
 
