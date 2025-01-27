@@ -2,6 +2,9 @@ package com.aklimets.data_structures.linkedlists.neetcode.merge_k_sorted;
 
 import com.aklimets.data_structures.linkedlists.neetcode.ListNode;
 
+import java.util.PriorityQueue;
+import java.util.Queue;
+
 public class MergeKSorted {
 
     /*
@@ -47,6 +50,26 @@ public class MergeKSorted {
             copy = copy.next;
             lists[minIndex] = lists[minIndex].next;
             notNulls = nulls;
+        }
+        return head.next;
+    }
+
+    public ListNode mergeKLists2(ListNode[] lists) {
+        if (lists.length == 0) return null;
+        ListNode head = new ListNode(-1);
+        ListNode copy = head;
+        Queue<ListNode> minHeap = new PriorityQueue<>((a, b) -> a.val - b.val);
+        for (ListNode list : lists) {
+            if (list != null) {
+                minHeap.offer(list);
+            }
+        }
+        while (!minHeap.isEmpty()) {
+            ListNode min = minHeap.poll();
+            copy.next = new ListNode(min.val);
+            copy = copy.next;
+            min = min.next;
+            if (min != null) minHeap.offer(min);
         }
         return head.next;
     }

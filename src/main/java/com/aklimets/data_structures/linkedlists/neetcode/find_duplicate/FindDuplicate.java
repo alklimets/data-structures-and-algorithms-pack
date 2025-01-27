@@ -40,7 +40,17 @@ public class FindDuplicate {
         return -1;
     }
 
+    public int findDuplicate2(int[] nums) {
+        int fast = 0, slow = 1;
+        while (fast != slow) {
+            fast = nums[fast];
+            fast = nums[fast];
+            slow = nums[slow];
+        }
+        return fast;
+    }
+
     public static void main(String[] args) {
-        System.out.println(new FindDuplicate().findDuplicate(new int[] {1,2,3,2,2}));
+        System.out.println(new FindDuplicate().findDuplicate2(new int[] {1,2,3,2,2}));
     }
 }
