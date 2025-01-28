@@ -49,6 +49,26 @@ public class LongestConseqSequence {
         return res;
     }
 
+    // works even faster
+    public int longestConsecutive2(int[] nums) {
+         Set<Integer> items = new HashSet<>();
+         int max = 0;
+         for (int i : nums) {
+             items.add(i);
+         }
+         for (int i : items) {
+             if (!items.contains(i-1)) {
+                 int val = i;
+                 int length = 0;
+                 while (items.contains(val++)) {
+                     length++;
+                 }
+                 max = Math.max(max, length);
+             }
+         }
+         return max;
+    }
+
     public static void main(String[] args) {
         System.out.println(new LongestConseqSequence().longestConsecutive(new int[] {3,1,2,4,8,9,10}));
     }
