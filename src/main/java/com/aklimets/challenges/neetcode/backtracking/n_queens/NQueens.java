@@ -71,4 +71,45 @@ public class NQueens {
         }
         res.add(combined);
     }
+
+
+    // a bit faster solution
+    public List<List<String>> solveNQueens2(int n) {
+        if (n == 1) return List.of(List.of("Q"));
+        if (n == 2 || n == 3) return List.of();
+        char[][] board = new char[n][n];
+        for (char[] b : board) {
+            Arrays.fill(b, '.');
+        }
+        dfs2(n, 0, board);
+        return res;
+    }
+
+    public void dfs2(int n, int row, char[][] board) {
+        if (row == n) {
+            // construct(n, current);
+            List<String> combine = new ArrayList<>();
+            for (char[] b : board) {
+                combine.add(new String(b));
+            }
+            res.add(combine);
+            return;
+        }
+
+        for (int i = 0; i < n; i++) {
+            int leftD = n - 1 - row + i;
+            int rightD = row + i;
+            if (!columns.contains(i) && !leftDiagonal.contains(leftD) && !rightDiagonal.contains(rightD)) {
+                board[row][i] = 'Q';
+                columns.add(i);
+                leftDiagonal.add(leftD);
+                rightDiagonal.add(rightD);
+                dfs2(n, row + 1, board);
+                board[row][i] = '.';
+                columns.remove(i);
+                leftDiagonal.remove(leftD);
+                rightDiagonal.remove(rightD);
+            }
+        }
+    }
 }
