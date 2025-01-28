@@ -1,5 +1,9 @@
 package com.aklimets.data_structures.graphs.leetcode.number_of_islands;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 public class NumberOfIslands {
 
     /*
@@ -36,21 +40,41 @@ public class NumberOfIslands {
             for (int j = 0; j < grid[0].length; j++) {
                 if (grid[i][j] == '1') {
                     result++;
-                    explore(grid, i, j);
+                    exploreBfs(grid, i, j);
                 }
             }
         }
         return result;
     }
 
-    private void explore(char[][] grid, int i, int j) {
+    private void exploreDfs(char[][] grid, int i, int j) {
         if (i < 0 || j < 0 || i >= grid.length || j >= grid[0].length || grid[i][j] != '1') return;
 
         grid[i][j] = '0';
 
-        explore(grid, i + 1, j);
-        explore(grid, i, j + 1);
-        explore(grid, i - 1, j);
-        explore(grid, i, j - 1);
+        exploreDfs(grid, i + 1, j);
+        exploreDfs(grid, i, j + 1);
+        exploreDfs(grid, i - 1, j);
+        exploreDfs(grid, i, j - 1);
+    }
+
+    List<int[]> directions = List.of(new int[]{1,0}, new int[]{0,1}, new int[]{-1,0}, new int[]{0,-1});
+
+    private void exploreBfs(char[][] grid, int i, int j) {
+        Queue<int[]> queue = new LinkedList<>();
+        queue.offer(new int[] {i, j});
+        while (!queue.isEmpty()) {
+            int[] poll = queue.poll();
+            int ii = poll[0], jj = poll[1];
+            grid[ii][jj] = '0';
+            for (int[] dir : directions) {
+                int newI = ii + dir[0];
+                int newJ = jj + dir[1];
+                if (newI >= 0 && newJ >= 0 && newI < grid.length && newJ < grid[0].length && grid[newI][newJ] == '1') {
+                    queue.offer(new int[]{newI, newJ});
+                }
+            }
+
+        }
     }
 }
