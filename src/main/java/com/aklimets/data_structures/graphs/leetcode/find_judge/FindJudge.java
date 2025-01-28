@@ -34,14 +34,13 @@ public class FindJudge {
 
     public int findJudge(int n, int[][] trust) {
         int[] trusters = new int[n + 1];
-        boolean[] trustSomebody = new boolean[n + 1];
         for (int[] tr : trust) {
             trusters[tr[1]]++;
-            trustSomebody[tr[0]] = true;
+            trusters[tr[0]]--;
         }
 
         for (int i = 1; i <= n; i++) {
-            if (!trustSomebody[i] && trusters[i] == n - 1) return i;
+            if (trusters[i] == n - 1) return i;
         }
         return -1;
     }

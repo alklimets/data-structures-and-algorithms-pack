@@ -60,18 +60,18 @@ public class NumberOfIslands {
     private void exploreBfs(char[][] grid, int i, int j) {
         Queue<int[]> queue = new LinkedList<>();
         queue.offer(new int[] {i, j});
+        grid[i][j] = '0';
         while (!queue.isEmpty()) {
             int[] poll = queue.poll();
             int ii = poll[0], jj = poll[1];
-            grid[ii][jj] = '0';
             for (int[] dir : directions) {
                 int newI = ii + dir[0];
                 int newJ = jj + dir[1];
                 if (newI >= 0 && newJ >= 0 && newI < grid.length && newJ < grid[0].length && grid[newI][newJ] == '1') {
                     queue.offer(new int[]{newI, newJ});
+                    grid[newI][newJ] = '0';
                 }
             }
-
         }
     }
 }
