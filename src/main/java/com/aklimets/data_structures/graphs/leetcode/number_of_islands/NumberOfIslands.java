@@ -49,13 +49,10 @@ public class NumberOfIslands {
 
     private void exploreDfs(char[][] grid, int i, int j) {
         if (i < 0 || j < 0 || i >= grid.length || j >= grid[0].length || grid[i][j] != '1') return;
-
         grid[i][j] = '0';
-
-        exploreDfs(grid, i + 1, j);
-        exploreDfs(grid, i, j + 1);
-        exploreDfs(grid, i - 1, j);
-        exploreDfs(grid, i, j - 1);
+        for (int[] dir : directions) {
+            exploreDfs(grid, i + dir[0], j + dir[1]);
+        }
     }
 
     List<int[]> directions = List.of(new int[]{1,0}, new int[]{0,1}, new int[]{-1,0}, new int[]{0,-1});
