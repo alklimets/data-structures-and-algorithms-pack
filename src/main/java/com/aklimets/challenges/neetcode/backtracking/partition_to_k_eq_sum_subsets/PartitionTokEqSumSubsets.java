@@ -1,5 +1,7 @@
 package com.aklimets.challenges.neetcode.backtracking.partition_to_k_eq_sum_subsets;
 
+import java.util.Arrays;
+
 public class PartitionTokEqSumSubsets {
 
     /*
@@ -25,6 +27,7 @@ public class PartitionTokEqSumSubsets {
         for (int num : nums) sum += num;
 
         if (sum % k > 0) return false;
+        Arrays.sort(nums);
         return dfs(nums, k, 0, new boolean[nums.length], 0, sum / k);
     }
 
@@ -44,7 +47,7 @@ public class PartitionTokEqSumSubsets {
             if (dfs(nums, k, i + 1, visited, sum, target)) return true;
             sum -= nums[i];
             visited[i] = false;
-
+            while (i < nums.length - 1 && nums[i] == nums[i + 1]) i++;
         }
         return false;
     }
