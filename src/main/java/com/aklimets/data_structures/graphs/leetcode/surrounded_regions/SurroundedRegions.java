@@ -1,7 +1,5 @@
 package com.aklimets.data_structures.graphs.leetcode.surrounded_regions;
 
-import java.util.Arrays;
-
 public class SurroundedRegions {
 
     /*
