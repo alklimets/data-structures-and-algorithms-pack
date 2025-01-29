@@ -91,4 +91,51 @@ public class PacificAtlanticWaterFlow {
 
         return false;
     }
+
+
+
+
+
+
+    int ROWS;
+    int COLS;
+
+    public List<List<Integer>> pacificAtlantic2(int[][] heights) {
+        ROWS = heights.length;
+        COLS = heights[0].length;
+
+        boolean[][] pac = new boolean[ROWS][COLS];
+        boolean[][] atl = new boolean[ROWS][COLS];
+
+        for (int i = 0; i < ROWS; i++) {
+            dfs(heights, i, 0, pac);
+            dfs(heights, i, COLS - 1, atl);
+        }
+
+        for (int i = 0; i < COLS; i++) {
+            dfs(heights, 0, i, pac);
+            dfs(heights, ROWS - 1, i, atl);
+        }
+
+        List<List<Integer>> res = new ArrayList<>();
+        for (int i = 0; i < heights.length; i++) {
+            for (int j = 0; j < heights[0].length; j++) {
+                if (pac[i][j] && atl[i][j]) {
+                    res.add(List.of(i, j));
+                }
+            }
+        }
+        return res;
+    }
+
+    private void dfs(int[][] heights, int i, int j, boolean[][] ocean) {
+        ocean[i][j] = true;
+        for (int[] dir : directions) {
+            int ii = i + dir[0];
+            int jj = j + dir[1];
+            if (ii >= 0 && jj >= 0 && ii < ROWS && jj < COLS && heights[ii][jj]>=heights[i][j] && !ocean[ii][jj]) {
+                dfs(heights, ii, jj, ocean);
+            }
+        }
+    }
 }
