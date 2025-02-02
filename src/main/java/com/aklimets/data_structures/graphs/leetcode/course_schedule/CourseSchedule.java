@@ -54,4 +54,33 @@ public class CourseSchedule {
         visited.remove(course);
         return true;
     }
+
+    public boolean canFinish2(int numCourses, int[][] relations) {
+        int[] inDegree = new int[numCourses];
+        Map<Integer, List<Integer>> graph = new HashMap<>();
+        for (int[] rel : relations) {
+            graph.computeIfAbsent(rel[0], v -> new ArrayList<>()).add(rel[1]);
+            inDegree[rel[1]]++;
+        }
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i = 0; i < numCourses; i++) {
+            if (inDegree[i] == 0) {
+                queue.offer(i);
+            }
+        }
+
+        int finish = 0;
+        while (!queue.isEmpty()) {
+            Integer poll = queue.poll();
+            finish++;
+
+            for (Integer related : graph.getOrDefault(poll, List.of())) {
+                inDegree[related]--;
+                if (inDegree[related] == 0) {
+                    queue.offer(related);
+                }
+            }
+        }
+        return finish == numCourses;
+    }
 }
