@@ -69,4 +69,40 @@ public class CourseSchedule4 {
         }
         return false;
     }
+
+    public List<Boolean> checkIfPrerequisite2(int numCourses, int[][] prerequisites, int[][] queries) {
+        List<Boolean> res = new ArrayList<>();
+        Map<Integer, List<Integer>> graph = new HashMap<>();
+        Map<Integer, Set<Integer>> prereq = new HashMap<>();
+        int[] indegree = new int[numCourses];
+
+        for (int[] pre : prerequisites) {
+            graph.computeIfAbsent(pre[0], v -> new ArrayList<>()).add(pre[1]);
+            indegree[pre[1]]++;
+        }
+
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i = 0; i < numCourses; i++) {
+            if (indegree[i] == 0) {
+                queue.offer(i);
+            }
+        }
+
+        while (!queue.isEmpty()) {
+            Integer course = queue.poll();
+            for (int rel : graph.getOrDefault(course, List.of())) {
+                indegree[rel]--;
+                prereq.computeIfAbsent(rel, v -> new HashSet<>()).add(course);
+                prereq.computeIfAbsent(rel, v -> new HashSet<>()).addAll(prereq.getOrDefault(course, Set.of()));
+                if (indegree[rel] == 0) {
+                    queue.offer(rel);
+                }
+            }
+        }
+
+        for (int[] query : queries) {
+            res.add(prereq.getOrDefault(query[1], new HashSet<>()).contains(query[0]));
+        }
+        return res;
+    }
 }
