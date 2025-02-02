@@ -52,6 +52,7 @@ public class CourseSchedule {
             }
         }
         visited.remove(course);
+        graph.put(course, List.of());
         return true;
     }
 
