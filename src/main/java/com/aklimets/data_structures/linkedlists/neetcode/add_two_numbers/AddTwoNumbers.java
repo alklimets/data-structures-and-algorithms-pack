@@ -26,34 +26,33 @@ public class AddTwoNumbers {
     */
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        int num1 = 0;
-        int num2 = 0;
-
-        ListNode l1copy = l1;
-        ListNode l2copy = l2;
-
-        int num1multiplicator = 1;
-        int num2multiplicator = 1;
-        while (l1copy != null) {
-            num1 += l1copy.val * num1multiplicator;
-            num1multiplicator *= 10;
-            l1copy = l1copy.next;
-        }
-        while (l2copy != null) {
-            num2 += l2copy.val * num2multiplicator;
-            num2multiplicator *= 10;
-            l2copy = l2copy.next;
-        }
-
-        int sum = num1 + num2;
+        int add = 0;
         ListNode head = new ListNode(-1);
         ListNode copy = head;
-        if (sum == 0) return new ListNode(0);
-        while (sum != 0) {
-            int num = sum % 10;
-            copy.next = new ListNode(num);
+        while (l1 != null || l2 != null) {
+            int sum = add;
+            if (l1 != null) {
+                sum += l1.val;
+                l1 = l1.next;
+            }
+
+            if (l2 != null) {
+                sum += l2.val;
+                l2 = l2.next;
+            }
+            if (sum >= 10) {
+                add = 1;
+                sum %= 10;
+            } else {
+                add = 0;
+            }
+            ListNode node = new ListNode(sum);
+            copy.next = node;
             copy = copy.next;
-            sum /= 10;
+
+        }
+        if (add == 1) {
+            copy.next = new ListNode(1);
         }
         return head.next;
     }
