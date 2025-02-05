@@ -39,7 +39,6 @@ public class LongestIncreasingPathInMatrix {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
                 int length = dfs(matrix, i, j, -1);
-                System.out.println(length);
                 max = Math.max(max, length);
             }
         }
