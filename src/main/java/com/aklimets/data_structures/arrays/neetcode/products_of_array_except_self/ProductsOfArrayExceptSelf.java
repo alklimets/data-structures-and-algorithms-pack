@@ -1,4 +1,4 @@
-package com.aklimets.data_structures.arrays.products_of_array_except_self;
+package com.aklimets.data_structures.arrays.neetcode.products_of_array_except_self;
 
 public class ProductsOfArrayExceptSelf {
 

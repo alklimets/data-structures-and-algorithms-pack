@@ -1,5 +1,6 @@
 package com.aklimets.data_structures.arrays.max_product_of_2_nums;
 
+import com.aklimets.data_structures.arrays.neetcode.max_product_of_2_nums.MaxProductOfTwo;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
