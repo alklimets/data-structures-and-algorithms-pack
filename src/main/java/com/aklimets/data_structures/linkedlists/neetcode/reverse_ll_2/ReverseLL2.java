@@ -49,6 +49,51 @@ public class ReverseLL2 {
             before.next = prev;
         }
 
-        return left > 1 ? head :  prev;
+        return left > 1 ? head : prev;
+    }
+
+    public ListNode reverseBetween2(ListNode head, int left, int right) {
+        if (left == right) return head;
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+
+        ListNode start = dummy;
+        ListNode beginEnd = null;
+        for (int i = 0; i < left; i++) {
+            beginEnd = start;
+            start = start.next;
+        }
+
+        ListNode prev = start;
+        for (int i = left; i <= right; i++) {
+            prev = prev.next;
+        }
+
+
+        for (int i = left; i <= right; i++) {
+            ListNode next = start.next;
+            start.next = prev;
+            prev = start;
+            start = next;
+        }
+        beginEnd.next = prev;
+
+        return dummy.next;
+    }
+
+    public static void main(String[] args) {
+        ReverseLL2 list = new ReverseLL2();
+        ListNode head = new ListNode(1);
+        ListNode copy = head;
+        for (int i = 2; i <= 5; i++) {
+            copy.next = new ListNode(i);
+            copy = copy.next;
+        }
+
+        ListNode node = list.reverseBetween2(head, 2, 4);
+        while (node != null) {
+            System.out.println(node.val);
+            node = node.next;
+        }
     }
 }

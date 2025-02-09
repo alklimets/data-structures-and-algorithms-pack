@@ -1,7 +1,6 @@
 package com.aklimets.data_structures.arrays.leetcode.majority_element2;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class MajorityElement2 {
 
@@ -21,8 +20,8 @@ public class MajorityElement2 {
             Output: [1,2]
             Constraints:
 
-            1 <= nums.length <= 5 * 104
-            -109 <= nums[i] <= 109
+            1 <= nums.length <= 5 * 10^4
+            -10^9 <= nums[i] <= 10^9
 
 
             Follow up: Could you solve the problem in linear time and in O(1) space?
@@ -63,6 +62,30 @@ public class MajorityElement2 {
         if (c1 > nums.length / 3) res.add(candidate1);
         if (c2 > nums.length / 3) res.add(candidate2);
         return res;
+    }
 
+    public List<Integer> majorityElement2(int[] nums) {
+        if (nums.length == 1) return List.of(nums[0]);
+        Map<Integer, Integer> counters = new HashMap<>();
+        Queue<Map.Entry<Integer, Integer>> heap = new PriorityQueue<>((a, b) -> b.getValue() - a.getValue());
+        for (int num : nums) {
+            counters.compute(num, (k, v) -> v == null ? 1 : v + 1);
+        }
+        for (Map.Entry<Integer, Integer> entry : counters.entrySet()) {
+            heap.offer(entry);
+        }
+
+        Map.Entry<Integer, Integer> candidate1 = heap.poll();
+        Map.Entry<Integer, Integer> candidate2= heap.poll();
+
+        List<Integer> res = new ArrayList<>();
+        if (candidate1.getValue() > nums.length / 3) res.add(candidate1.getKey());
+        if (candidate2.getValue() > nums.length / 3) res.add(candidate2.getKey());
+        return res;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new MajorityElement2().majorityElement(new int[] {3,2,2,3}));
+        System.out.println(new MajorityElement2().majorityElement2(new int[] {3,2,2,3}));
     }
 }

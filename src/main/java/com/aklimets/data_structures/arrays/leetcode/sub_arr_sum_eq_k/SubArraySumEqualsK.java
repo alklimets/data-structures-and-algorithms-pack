@@ -25,7 +25,7 @@ public class SubArraySumEqualsK {
     }
 
     /*
-        You may come up with two pointers/ sliding window technique at the very begin thought, which is not right after you have tried. Here is the general summary to expalin why we can not apply two pointers to solve this problem.
+        You may come up with two pointers/ sliding window technique at the very beginning thought, which is not right after you have tried. Here is the general summary to explain why we can not apply two pointers to solve this problem.
         Let go through the process of explanation by introducing what kind of problem can be solved with two pointers, such that if this problem doesn't match the criteria, it cannot be solved with two pointers.
         A problem can be solved by two pointers when two pointers come into place to help us reduce the total cases we need to consider, such that the corresponding time complexity will reduce too.
         Let's trying to solve longest-substring-without-repeating-characters firstly, which is a problem that can be solved by two pointers. After that, I will generalize the characteristics of that problem, such that we can know what kind of problem can be solved by two pointers.

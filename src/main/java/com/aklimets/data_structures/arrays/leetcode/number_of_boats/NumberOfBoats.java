@@ -24,8 +24,8 @@ public class NumberOfBoats {
         Explanation: 4 boats (3), (3), (4), (5)
         Constraints:
 
-        1 <= people.length <= 5 * 104
-        1 <= people[i] <= limit <= 3 * 104
+        1 <= people.length <= 5 * 10^4
+        1 <= people[i] <= limit <= 3 * 10^4
     */
 
     public int numRescueBoats(int[] people, int limit) {
@@ -34,14 +34,11 @@ public class NumberOfBoats {
         int l = 0, r = people.length - 1;
 
         while (l <= r) {
-            if (people[r] + people[l] > limit) {
-                counter++;
-                r--;
-            } else {
-                counter++;
-                r--;
+            if (people[r] + people[l] <= limit) {
                 l++;
             }
+            counter++;
+            r--;
         }
         return counter;
     }

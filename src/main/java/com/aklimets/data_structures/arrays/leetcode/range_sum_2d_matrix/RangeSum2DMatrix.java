@@ -27,10 +27,10 @@ public class RangeSum2DMatrix {
         m == matrix.length
         n == matrix[i].length
         1 <= m, n <= 200
-        -104 <= matrix[i][j] <= 104
+        -10^4 <= matrix[i][j] <= 10^4
         0 <= row1 <= row2 < m
         0 <= col1 <= col2 < n
-        At most 104 calls will be made to sumRegion.
+        At most 10^4 calls will be made to sumRegion.
     */
 
     private final int[][] prefixMatrix;

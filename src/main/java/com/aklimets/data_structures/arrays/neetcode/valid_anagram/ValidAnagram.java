@@ -39,8 +39,8 @@ public class ValidAnagram {
         int[] arr = new int[26];
 
         for (int i = 0; i < s.length(); i++) {
-            arr[s.charAt(i) - 97]++;
-            arr[t.charAt(i) - 97]--;
+            arr[s.charAt(i) - 'a']++;
+            arr[t.charAt(i) - 'a']--;
         }
 
         for (int i : arr) {

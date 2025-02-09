@@ -29,7 +29,7 @@ public class MaxProductOfTwo extends LearningTask<int[]> {
     }
 
     @Override
-    protected int[] solve(int[] input) {
+    public int[] solve(int[] input) {
         if (input.length < 2) {
             return new int[]{0};
         }
