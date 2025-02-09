@@ -30,24 +30,22 @@ public class LevelOrderTraversal {
     public List<List<Integer>> levelOrder(TreeNode root) {
         if (root == null) return new ArrayList<>();
         List<List<Integer>> result = new ArrayList<>();
-        Queue<Map.Entry<TreeNode, Integer>> queue = new LinkedList<>();
-        queue.offer(Map.entry(root, 1));
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
         while (!queue.isEmpty()) {
-            Map.Entry<TreeNode, Integer> entry = queue.poll();
-            int level = entry.getValue();
-            TreeNode node = entry.getKey();
+            List<Integer> level = new ArrayList<>();
+            for (int i = queue.size(); i > 0; i--) {
+                TreeNode node = queue.poll();
+                level.add(node.val);
 
-            if (result.size() < level) {
-                result.add(new ArrayList<>());
+                if (node.left != null) {
+                    queue.offer(node.left);
+                }
+                if (node.right != null) {
+                    queue.offer(node.right);
+                }
             }
-            result.get(level - 1).add(node.val);
-            if (node.left != null) {
-                queue.offer(Map.entry(node.left, level + 1));
-            }
-
-            if (node.right != null) {
-                queue.offer(Map.entry(node.right, level + 1));
-            }
+            result.add(level);
         }
         return result;
     }

@@ -48,4 +48,27 @@ public class RightSideView {
         }
         return result;
     }
+
+    public List<Integer> rightSideView2(TreeNode root) {
+        if (root == null) return new ArrayList<>();
+        List<Integer> result = new LinkedList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            TreeNode lastNode = null;
+            for (int i = queue.size(); i > 0; i--) {
+                lastNode = queue.poll();
+                if (lastNode.left != null) {
+                    queue.offer(lastNode.left);
+                }
+
+                if (lastNode.right != null) {
+                    queue.offer(lastNode.right);
+                }
+            }
+            result.add(lastNode.val);
+
+        }
+        return result;
+    }
 }

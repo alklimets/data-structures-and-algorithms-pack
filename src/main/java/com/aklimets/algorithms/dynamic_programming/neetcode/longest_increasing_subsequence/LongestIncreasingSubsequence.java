@@ -1,5 +1,6 @@
 package com.aklimets.algorithms.dynamic_programming.neetcode.longest_increasing_subsequence;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,6 +52,21 @@ public class LongestIncreasingSubsequence {
             }
         }
         memo.put(start, max);
+        return max;
+    }
+
+    public int lengthOfLIS2(int[] nums) {
+        int[] dp = new int[nums.length];
+        Arrays.fill(dp, 1);
+        int max = 1;
+        for (int i = nums.length - 2; i >= 0; i--) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[i] < nums[j]) {
+                    dp[i] = Math.max(dp[i], dp[j] + 1);
+                }
+                max = Math.max(max, dp[i]);
+            }
+        }
         return max;
     }
 

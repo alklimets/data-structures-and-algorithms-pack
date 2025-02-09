@@ -1,5 +1,6 @@
 package com.aklimets.challenges.neetcode.sliding_window.permutation_in_string;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,6 +48,28 @@ public class PermutationInString {
             if (currentPerm.get(s2.charAt(l - 1)) == 0) currentPerm.remove(s2.charAt(l - 1));
             currentPerm.compute(s2.charAt(++r), (k, v) -> v == null ? 1 : v + 1);
             if (targetPerm.equals(currentPerm)) return true;
+        }
+
+        return false;
+    }
+
+    public boolean checkInclusion2(String s1, String s2) {
+        if (s2.length() < s1.length()) return false;
+        int l = 0, r = s1.length() - 1;
+
+        int[] targetFreq = new int[26];
+        int[] currentFreq = new int[26];
+
+        for (int i = 0; i < s1.length(); i++) {
+            targetFreq[s1.charAt(i) - 'a']++;
+            currentFreq[s2.charAt(i) - 'a']++;
+        }
+
+        if (Arrays.equals(targetFreq, currentFreq)) return true;
+        while (r < s2.length() - 1) {
+            currentFreq[s2.charAt(l++) - 'a']--;
+            currentFreq[s2.charAt(++r) - 'a']++;
+            if (Arrays.equals(targetFreq, currentFreq)) return true;
         }
 
         return false;
