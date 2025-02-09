@@ -38,8 +38,8 @@ public class FreqStack {
 
         Constraints:
 
-        0 <= val <= 109
-        At most 2 * 104 calls will be made to push and pop.
+        0 <= val <= 10^9
+        At most 2 * 10^4 calls will be made to push and pop.
         It is guaranteed that there will be at least one element in the stack before calling pop.
     */
 

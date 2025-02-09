@@ -18,7 +18,7 @@ public class RemoveDuplicateLetters {
 
         Constraints:
 
-        1 <= s.length <= 104
+        1 <= s.length <= 10^4
         s consists of lowercase English letters.
     */
 
@@ -40,6 +40,6 @@ public class RemoveDuplicateLetters {
             seen[curr] = true;
 
         }
-        return String.join("", stack.stream().map(i -> String.valueOf((char)('a' + ((int) i)))).toList());
+        return String.join("", stack.stream().map(i -> String.valueOf((char)('a' + i))).toList());
     }
 }

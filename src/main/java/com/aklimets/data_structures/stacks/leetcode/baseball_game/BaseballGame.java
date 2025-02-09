@@ -63,7 +63,7 @@ public class BaseballGame {
         int sum = 0;
         for (String operation : operations) {
             if (operation.equals("C")) {
-                Integer num = stack.pop();
+                stack.pop();
             } else if (operation.equals("D")) {
                 Integer num = stack.peek();
                 stack.push(num * 2);
