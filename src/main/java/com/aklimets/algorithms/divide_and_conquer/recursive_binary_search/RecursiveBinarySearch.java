@@ -1,4 +1,4 @@
-package com.aklimets.algorithms.divide_and_concur.recursive_binary_search;
+package com.aklimets.algorithms.divide_and_conquer.recursive_binary_search;
 
 public class RecursiveBinarySearch {
 

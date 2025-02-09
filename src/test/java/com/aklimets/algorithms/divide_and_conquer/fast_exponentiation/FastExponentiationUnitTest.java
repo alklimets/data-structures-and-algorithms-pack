@@ -1,4 +1,4 @@
-package com.aklimets.algorithms.divide_and_concur.fast_exponentiation;
+package com.aklimets.algorithms.divide_and_conquer.fast_exponentiation;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;

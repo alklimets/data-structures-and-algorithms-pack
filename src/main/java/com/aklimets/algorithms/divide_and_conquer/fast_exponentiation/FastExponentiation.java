@@ -1,4 +1,4 @@
-package com.aklimets.algorithms.divide_and_concur.fast_exponentiation;
+package com.aklimets.algorithms.divide_and_conquer.fast_exponentiation;
 
 public class FastExponentiation {
 

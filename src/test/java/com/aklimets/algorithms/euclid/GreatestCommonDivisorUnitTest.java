@@ -1,6 +1,6 @@
 package com.aklimets.algorithms.euclid;
 
-import com.aklimets.algorithms.divide_and_concur.euclid.GreatestCommonDivisor;
+import com.aklimets.algorithms.divide_and_conquer.euclid.GreatestCommonDivisor;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 

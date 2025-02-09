@@ -1,16 +1,15 @@
-package com.aklimets.algorithms.divide_and_concur.recursive_biggest_number;
+package com.aklimets.algorithms.divide_and_conquer.recursive_array_sum;
 
 import java.util.Arrays;
 
-public class RecursiveBiggestNumber {
+public class RecursiveArraySum {
 
     public int solve(int[] input) {
         if (input.length == 1) {
             return input[0];
         }
-
         int[] left = Arrays.copyOfRange(input, 0, input.length / 2);
         int[] right = Arrays.copyOfRange(input, (input.length / 2), input.length);
-        return Math.max(solve(left), solve(right));
+        return solve(left) + solve(right);
     }
 }
