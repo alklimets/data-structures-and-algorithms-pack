@@ -36,10 +36,10 @@ public class BuildTreeFromTraversals {
         for (int i = 0; i < inorder.length; i++) {
             inorderIndexes.put(inorder[i], i);
         }
-        return dfs(preorder, inorder, 0, preorder.length - 1, 0, inorder.length - 1);
+        return dfs(preorder, 0, preorder.length - 1, 0, inorder.length - 1);
     }
 
-    public TreeNode dfs(int[] preorder, int[] inorder, int preStart, int preEnd, int inStart, int inEnd) {
+    public TreeNode dfs(int[] preorder, int preStart, int preEnd, int inStart, int inEnd) {
         if (preStart > preEnd) return null;
         if (preStart == preEnd) {
             return new TreeNode(preorder[preStart]);
@@ -49,10 +49,10 @@ public class BuildTreeFromTraversals {
         TreeNode root = new TreeNode(rootVal);
 
         int leftDiff = inorderRootIndex - inStart;
-        root.left = dfs(preorder, inorder, preStart + 1, preStart + leftDiff, inStart, inorderRootIndex - 1);
+        root.left = dfs(preorder, preStart + 1, preStart + leftDiff, inStart, inorderRootIndex - 1);
 
         int rightDiff = inEnd - inorderRootIndex - 1;
-        root.right = dfs(preorder, inorder, preEnd - rightDiff, preEnd, inorderRootIndex + 1, inEnd);
+        root.right = dfs(preorder, preEnd - rightDiff, preEnd, inorderRootIndex + 1, inEnd);
 
         return root;
     }

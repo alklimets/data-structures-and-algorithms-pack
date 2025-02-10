@@ -79,7 +79,6 @@ public class WordSearch2 {
         char buff = board[i][j];
         board[i][j] = '*';
 
-        TreeNode node = trie;
         trie = trie.nodes[buff - 'a'];
         if (trie.word != null) {
             res.add(trie.word);
