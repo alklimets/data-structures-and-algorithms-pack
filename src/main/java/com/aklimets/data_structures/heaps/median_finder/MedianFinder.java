@@ -48,7 +48,7 @@ public class MedianFinder {
     public void addNum(int num) {
         if (minHeap.isEmpty() && maxHeap.isEmpty()) {
             minHeap.offer(num);
-        } else if (minHeap.size() == maxHeap.size() || minHeap.size() > maxHeap.size()) {
+        } else if (minHeap.size() >= maxHeap.size()) {
             if (minHeap.peek() > num) {
                 maxHeap.offer(num);
             } else {
