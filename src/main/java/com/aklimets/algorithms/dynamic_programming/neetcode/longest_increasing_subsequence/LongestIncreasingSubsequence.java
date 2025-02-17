@@ -1,8 +1,6 @@
 package com.aklimets.algorithms.dynamic_programming.neetcode.longest_increasing_subsequence;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class LongestIncreasingSubsequence {
 
@@ -70,7 +68,23 @@ public class LongestIncreasingSubsequence {
         return max;
     }
 
+    public int lengthOfLIS3(int[] nums) {
+        List<Integer> values = new ArrayList<>();
+        for (int num : nums) {
+            int pos = Collections.binarySearch(values, num);
+            if (pos < 0) pos = -pos - 1;
+
+            if (pos < values.size()) {
+                values.set(pos, num);
+            } else {
+                values.add(num);
+            }
+        }
+        return values.size();
+    }
+
     public static void main(String[] args) {
         System.out.println(new LongestIncreasingSubsequence().lengthOfLIS2(new int[]{1,3,6,7,9,4,10,5,6}));
+        System.out.println(new LongestIncreasingSubsequence().lengthOfLIS3(new int[]{1,3,6,7,9,4,10,5,6}));
     }
 }
