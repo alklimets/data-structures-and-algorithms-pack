@@ -36,51 +36,45 @@ public class SubstringOfAllWordsConcat {
 
     public List<Integer> findSubstring(String s, String[] words) {
         List<Integer> res = new ArrayList<>();
-        int l = 0, r = 0, wordSize = words[0].length();
+        int wordSize = words[0].length();
 
         Set<String> dict = new HashSet<>(Arrays.asList(words).stream().toList());
         Map<String, Integer> desired = new HashMap<>();
-        Map<String, Integer> window = new HashMap<>();
 
         for (String word : words) {
             desired.compute(word, (k, v) -> v == null ? 1 : v + 1);
         }
-        int matches = 0;
         int desiredMatches = dict.size();
 
-        while (r < s.length()) {
-            if (r + wordSize > s.length()) break;
+        for (int i = 0; i < wordSize; i++) {
+            int l = i, r = i, count = 0;
+            Map<String, Integer> window = new HashMap<>();
 
-            String substring = s.substring(r, r + wordSize);
-            if (!dict.contains(substring)) {
-                l = l + 1;
-                r = l;
-                matches = 0;
-                window.clear();
-            } else {
-                window.compute(substring, (k, v) -> v == null ? 1 : v + 1);
-                if ((int) window.get(substring) == desired.get(substring)) {
-                    matches++;
-                } else if ((int) window.get(substring) > desired.get(substring)) {
+            while (r + wordSize <= s.length()) {
+                String sub = s.substring(r, r + wordSize);
+                r += wordSize;
+                if (!dict.contains(sub)) {
+                    l = r;
                     window.clear();
-                    matches = 0;
-                    l = l + 1;
-                    r = l;
-                    continue;
-                }
-
-                if (matches == desiredMatches) {
-                    res.add(l);
-                    window.clear();
-                    matches = 0;
-                    l = l + 1;
-                    r = l;
+                    count = 0;
                 } else {
-                    r += wordSize;
-                }
+                    window.compute(sub, (k, v) -> v == null ? 1 : v + 1);
 
+                    if (window.get(sub).equals(desired.get(sub))) count++;
+
+                    while (window.get(sub) > desired.get(sub)) {
+                        String left = s.substring(l, l + wordSize);
+                        if (window.get(left).equals(desired.get(left))) count--;
+                        window.compute(left, (k, v) -> v - 1);
+                        l += wordSize;
+                    }
+
+                    if (count == desiredMatches) res.add(l);
+                }
             }
         }
+
+
 
         return res;
     }
