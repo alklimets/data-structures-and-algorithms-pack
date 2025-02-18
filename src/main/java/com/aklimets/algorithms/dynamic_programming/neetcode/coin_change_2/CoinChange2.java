@@ -58,7 +58,23 @@ public class CoinChange2 {
         return dp[coins.length - 1][amount];
     }
 
+    public int change2(int amount, int[] coins) {
+        int[] dp = new int[amount + 1];
+        dp[0] = 1;
+
+        for (int coin : coins) {
+            for (int i = 0; i <= amount; i++) {
+                if (i >= coin) {
+                    dp[i] += dp[i - coin];
+                }
+            }
+        }
+
+        return dp[amount];
+    }
+
     public static void main(String[] args) {
-        System.out.println(new CoinChange2().change(7, new int[]{2, 4}));
+//        System.out.println(new CoinChange2().change(7, new int[]{2, 4}));
+        System.out.println(new CoinChange2().change2(7, new int[]{2, 3, 4, 1}));
     }
 }
