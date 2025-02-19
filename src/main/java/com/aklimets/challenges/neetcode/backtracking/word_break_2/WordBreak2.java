@@ -78,4 +78,8 @@ public class WordBreak2 {
             }
         }
     }
+
+    public static void main(String[] args) {
+        System.out.println(new WordBreak2().wordBreak("pineapplepenapple", List.of("apple","pen","applepen","pine","pineapple")));
+    }
 }

@@ -65,4 +65,8 @@ public class CombinationSum3 {
             }
         }
     }
+
+    public static void main(String[] args) {
+        System.out.println(new CombinationSum3().combinationSum3(3, 9));
+    }
 }

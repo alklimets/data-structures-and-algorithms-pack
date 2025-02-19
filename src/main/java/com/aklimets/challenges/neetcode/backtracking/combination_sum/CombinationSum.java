@@ -61,6 +61,9 @@ public class CombinationSum {
         backtrack(nums, target - nums[i], res, curr, i);
         curr.removeLast();
         backtrack(nums, target, res, curr, i + 1);
+    }
 
+    public static void main(String[] args) {
+        System.out.println(new CombinationSum().combinationSum(new int[] {2,5,6,9}, 9));
     }
 }

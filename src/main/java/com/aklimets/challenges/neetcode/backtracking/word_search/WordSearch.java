@@ -60,4 +60,12 @@ public class WordSearch {
         board[i][j] = word.charAt(letter);
         return result;
     }
+
+    public static void main(String[] args) {
+        System.out.println(new WordSearch().exist(new char[][]{
+                {'A', 'B', 'C', 'D'},
+                {'S', 'A', 'A', 'T'},
+                {'A', 'C', 'A', 'E'}
+        }, "ABCDTAASACAE"));
+    }
 }

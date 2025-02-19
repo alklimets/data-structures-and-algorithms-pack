@@ -1,4 +1,4 @@
-package com.aklimets.challenges.neetcode.backtracking.combinations_sum_2;
+package com.aklimets.challenges.neetcode.backtracking.combination_sum_2;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -104,5 +104,9 @@ public class CombinationSum2 {
             backtrack3(candidates, target - candidates[i], i + 1, res, cur);
             cur.removeLast();
         }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new CombinationSum2().combinationSum2(new int[] {9,2,2,4,6,1,5}, 8));
     }
 }

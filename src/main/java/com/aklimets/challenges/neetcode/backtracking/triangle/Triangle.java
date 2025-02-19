@@ -51,6 +51,9 @@ public class Triangle {
         int min = triangle.get(i).get(j) + Math.min(backtrack(triangle, i + 1, j), backtrack(triangle, i + 1, j + 1));
         memo[i][j] = min;
         return min;
+    }
 
+    public static void main(String[] args) {
+        System.out.println(new Triangle().minimumTotal(List.of(List.of(2), List.of(3, 4), List.of(6, 5, 7), List.of(4, 1, 8, 3))));
     }
 }

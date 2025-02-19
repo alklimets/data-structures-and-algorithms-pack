@@ -65,7 +65,7 @@ public class NQueens {
         for (int queen : queens) {
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < n; i++) {
-                sb.append(i == queen ? 'Q' : '.');
+                sb.append(i == queen ? 'Q' : ". ");
             }
             combined.add(sb.toString());
         }
@@ -111,5 +111,12 @@ public class NQueens {
                 rightDiagonal.remove(rightD);
             }
         }
+    }
+
+    public static void main(String[] args) {
+        new NQueens().solveNQueens(5).forEach(i -> {
+            i.forEach(System.out::println);
+            System.out.println();
+        });
     }
 }

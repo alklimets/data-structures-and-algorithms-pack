@@ -47,7 +47,9 @@ public class Combinations {
             backtrack(i + 1, n, k, cur);
             cur.removeLast();
         }
+    }
 
-
+    public static void main(String[] args) {
+        System.out.println(new Combinations().combine(4, 2));
     }
 }

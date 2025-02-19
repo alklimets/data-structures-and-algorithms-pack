@@ -19,15 +19,15 @@ public class NQueens2 {
         1 <= n <= 9
     */
 
-    int res = 0;
+    long res = 0;
     boolean[] columns;
     boolean[] leftDiagonal;
     boolean[] rightDiagonal;
 
-    public int totalNQueens(int n) {
+    public long totalNQueens(int n) {
         columns = new boolean[n];
-        leftDiagonal = new boolean[2*n];
-        rightDiagonal = new boolean[2*n];
+        leftDiagonal = new boolean[2 * n];
+        rightDiagonal = new boolean[2 * n];
         if (n == 1) return 1;
         if (n == 2 || n == 3) return 0;
         dfs(n, 0);
@@ -51,6 +51,12 @@ public class NQueens2 {
                 leftDiagonal[leftD] = false;
                 rightDiagonal[rightD] = false;
             }
+        }
+    }
+
+    public static void main(String[] args) {
+        for (int i = 1; i <= 15; i++) {
+            System.out.println(new NQueens2().totalNQueens(i));
         }
     }
 }

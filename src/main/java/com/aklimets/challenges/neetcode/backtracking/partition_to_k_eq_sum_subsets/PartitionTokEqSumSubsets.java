@@ -51,4 +51,8 @@ public class PartitionTokEqSumSubsets {
         }
         return false;
     }
+
+    public static void main(String[] args) {
+        System.out.println(new PartitionTokEqSumSubsets().canPartitionKSubsets(new int[] {4,3,2,3,5,2,1}, 4));
+    }
 }
