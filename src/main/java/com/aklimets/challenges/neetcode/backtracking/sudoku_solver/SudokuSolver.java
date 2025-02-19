@@ -26,26 +26,20 @@ public class SudokuSolver {
         It is guaranteed that the input board has only one solution.
     */
 
-    List<Set<Character>> rows = new ArrayList<>();
-    List<Set<Character>> cols = new ArrayList<>();
-    List<Set<Character>> squares = new ArrayList<>();
+    boolean[][] rows = new boolean[9][9];
+    boolean[][] cols = new boolean[9][9];
+    boolean[][] squares = new boolean[9][9];
 
     public void solveSudoku(char[][] board) {
-        for (int i = 0; i < 9; i++) {
-            rows.add(new HashSet<>());
-            cols.add(new HashSet<>());
-            squares.add(new HashSet<>());
-        }
         int filled = 0;
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 if (board[i][j] != '.') {
-                    rows.get(i).add(board[i][j]);
-                    cols.get(j).add(board[i][j]);
-
                     int r = i / 3;
                     int c = j / 3;
-                    squares.get(3 * r + c).add(board[i][j]);
+                    rows[i][board[i][j] - '1'] = true;
+                    cols[j][board[i][j] - '1'] = true;
+                    squares[3 * r + c][board[i][j] - '1'] = true;
                     filled++;
                 }
             }
@@ -65,19 +59,20 @@ public class SudokuSolver {
                         int c = j / 3;
                         int sq = 3 * r + c;
                         char ch = (char) (k + '0');
-                        if (!rows.get(i).contains(ch) && !cols.get(j).contains(ch) && !squares.get(sq).contains(ch)) {
+                        if (!rows[i][k - 1] && !cols[j][k - 1] && !squares[sq][k - 1]) {
                             board[i][j] = ch;
-                            rows.get(i).add(ch);
-                            cols.get(j).add(ch);
-                            squares.get(sq).add(ch);
+                            rows[i][k - 1] = true;
+                            cols[j][k - 1] = true;
+                            squares[sq][k - 1] = true;
                             if (backtrack(board, filled + 1)) {
                                 return true;
                             }
                             board[i][j] = '.';
-                            rows.get(i).remove(ch);
-                            cols.get(j).remove(ch);
-                            squares.get(sq).remove(ch);
+                            rows[i][k - 1] = false;
+                            cols[j][k - 1] = false;
+                            squares[sq][k - 1] = false;
                         }
+
                     }
                     return false;
                 }
