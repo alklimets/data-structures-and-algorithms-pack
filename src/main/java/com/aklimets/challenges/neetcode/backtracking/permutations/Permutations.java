@@ -1,6 +1,7 @@
 package com.aklimets.challenges.neetcode.backtracking.permutations;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -25,11 +26,16 @@ public class Permutations {
         -10 <= nums[i] <= 10
     */
 
-    List<List<Integer>> res;
+    List<List<Integer>> res = new ArrayList<>();
+
     public List<List<Integer>> permute(int[] nums) {
-        res = new ArrayList<>();
         LinkedList<Integer> cur = new LinkedList<>();
         backtrack(nums, cur, new boolean[nums.length]);
+        return res;
+    }
+
+    public List<List<Integer>> permute2(int[] nums) {
+        backtrack2(nums, 0);
         return res;
     }
 
@@ -48,5 +54,42 @@ public class Permutations {
                 cur.removeLast();
             }
         }
+    }
+
+    public void backtrack2(int[] nums, int start) {
+        if (start == nums.length) {
+            List<Integer> list = new ArrayList<>();
+            for (int num : nums) {
+                list.add(num);
+            }
+            res.add(list);
+            return;
+        }
+
+        for (int i = start; i < nums.length; i++) {
+            swap(nums, start, i);
+            backtrack2(nums, start + 1);
+            swap(nums, start, i);
+        }
+    }
+
+    private void swap(int[] nums, int i, int j) {
+        int buf = nums[i];
+        nums[i] = nums[j];
+        nums[j] = buf;
+    }
+
+    public static void main(String[] args) {
+        int a = 1;
+        int b = 2;
+        // does not work with arrays
+        a ^= b;
+        b ^= a;
+        a ^= b;
+        System.out.println(a);
+        System.out.println(b);
+
+        System.out.println(new Permutations().permute(new int[]{1, 2, 3}));
+        System.out.println(new Permutations().permute2(new int[]{1, 2, 3}));
     }
 }
