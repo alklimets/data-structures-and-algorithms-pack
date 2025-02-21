@@ -4,7 +4,8 @@ public class MedianOfTwoSortedArrays {
 
     /*
         Median of Two Sorted Arrays
-        You are given two integer arrays nums1 and nums2 of size m and n respectively, where each is sorted in ascending order. Return the median value among all elements of the two arrays.
+        You are given two integer arrays nums1 and nums2 of size m and n respectively, where each is sorted in ascending order.
+        Return the median value among all elements of the two arrays.
 
         Your solution must run in  O(log(m+n)) time.
 
@@ -43,8 +44,8 @@ public class MedianOfTwoSortedArrays {
 
         int l = 0, r = nums1.length;
         while (l <= r) {
-            int iMiddle = (l + r) / 2;
-            int jMiddle = half - iMiddle;
+            int iMiddle = (l + r) / 2; // shows how many items we get from the left since indexes are 0 based
+            int jMiddle = half - iMiddle; // shows how many lef to get
 
             int aLeft = iMiddle > 0 ? nums1[iMiddle - 1] : Integer.MIN_VALUE;
             int aRight = iMiddle < nums1.length ? nums1[iMiddle] : Integer.MAX_VALUE;
@@ -69,5 +70,50 @@ public class MedianOfTwoSortedArrays {
 
         return -1;
 
+    }
+
+    // different pivot
+    public double findMedianSortedArrays2(int[] nums1, int[] nums2) {
+        int total = nums1.length + nums2.length;
+        int median = total / 2;
+
+        if (nums1.length > nums2.length) {
+            int[] buf = nums1;
+            nums1 = nums2;
+            nums2 = buf;
+        }
+
+        int l = 0, r = nums1.length;
+
+        while (l <= r) {
+            int midI = (l + r) / 2;
+            int midJ = median - midI;
+
+            int aLeft = midI > 0 ? nums1[midI - 1] : Integer.MIN_VALUE;
+            int aRight = midI < nums1.length ? nums1[midI] : Integer.MAX_VALUE;
+
+            int bLeft = midJ > 0 ? nums2[midJ - 1] : Integer.MIN_VALUE;
+            int bRight = midJ < nums2.length ? nums2[midJ] : Integer.MAX_VALUE;
+
+            if (aLeft <= bRight && bLeft <= aRight) {
+                if (total % 2 == 1) {
+                    return Math.min(aRight, bRight);
+                }
+                return (Math.max(aLeft, bLeft) + Math.min(aRight, bRight)) / 2.0;
+            }
+
+            if (aLeft < bRight) {
+                l = midI + 1;
+            } else {
+                r = midI - 1;
+            }
+
+        }
+
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new MedianOfTwoSortedArrays().findMedianSortedArrays(new int[] {1}, new int[] {7,9,10,11}));
     }
 }

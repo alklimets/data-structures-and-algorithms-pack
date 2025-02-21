@@ -39,7 +39,7 @@ public class CapacityToShipWeights {
 
         Constraints:
 
-        1 <= days <= weights.length <= 5 * 104
+        1 <= days <= weights.length <= 5 * 10,4
         1 <= weights[i] <= 500
     */
 
@@ -77,6 +77,6 @@ public class CapacityToShipWeights {
     }
 
     public static void main(String[] args) {
-        System.out.println(new CapacityToShipWeights().shipWithinDays(new int[] {1,2,3,4,5,6,7,8,9,10}, 5));
+        System.out.println(new CapacityToShipWeights().shipWithinDays(new int[] {1,2,3,4,5,6,7,8,9,10}, 10));
     }
 }

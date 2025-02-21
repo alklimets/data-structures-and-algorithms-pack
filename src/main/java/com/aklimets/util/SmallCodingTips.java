@@ -40,5 +40,10 @@ public class SmallCodingTips {
         deque.addFirst(2);
         deque.removeLast();
         deque.removeFirst();
+
+        // get round to next int
+        // (n - 1) / k + 1
+        int res = (9 - 1) / 3 + 1; // == 3
+        int res1 = (10 - 1) / 3 + 1; // == 4
     }
 }
