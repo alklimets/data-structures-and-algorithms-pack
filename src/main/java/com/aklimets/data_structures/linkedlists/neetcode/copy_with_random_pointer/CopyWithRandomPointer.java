@@ -67,4 +67,40 @@ public class CopyWithRandomPointer {
 
         return dummy.next;
     }
+
+    public RandomNode copyRandomList2(RandomNode head) {
+        if (head == null) return null;
+        RandomNode copy = head;
+
+        while (copy != null) {
+            RandomNode newRandomNode = new RandomNode(copy.val);
+            newRandomNode.next = copy.next;
+            copy.next = newRandomNode;
+            copy = newRandomNode.next;
+        }
+
+        copy = head;
+        while (copy != null) {
+            if (copy.random != null) {
+                copy.next.random = copy.random.next;
+            }
+            copy = copy.next.next;
+        }
+
+        RandomNode result = head.next;
+        RandomNode headCopy = head;
+        RandomNode resultCopy = result;
+        while (resultCopy != null) {
+            headCopy.next = resultCopy.next;
+            headCopy = headCopy.next;
+            if (headCopy != null) {
+                resultCopy.next = headCopy.next;
+                resultCopy = resultCopy.next;
+            } else {
+                resultCopy = null;
+            }
+
+        }
+        return result;
+    }
 }
