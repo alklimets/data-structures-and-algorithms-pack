@@ -37,29 +37,26 @@ public class LargestDivisibleSubset {
         Arrays.fill(dp, 1);
         Arrays.fill(parents, -1);
 
+        int maxIndex = 0;
+        int maxValue = 0;
         for(int i = 1; i < nums.length; i++) {
             int maxJ = -1;
-            int maxValue = 0;
+            int maxVal = 0;
             for (int j = i - 1; j >= 0; j--) {
-                if (nums[i] % nums[j] == 0 && dp[j] > maxValue) {
+                if (nums[i] % nums[j] == 0 && dp[j] > maxVal) {
                     maxJ = j;
-                    maxValue = dp[j];
+                    maxVal = dp[j];
                 }
             }
             dp[i] += maxJ == -1 ? 0 : dp[maxJ];
             parents[i] = maxJ;
-        }
-        List<Integer> res = new ArrayList<>();
 
-        int maxIndex = 0;
-        int maxValue = 0;
-        for (int i = 0; i < dp.length; i++) {
             if (dp[i] > maxValue) {
                 maxValue = dp[i];
                 maxIndex = i;
             }
         }
-
+        List<Integer> res = new ArrayList<>();
         while (maxIndex != -1) {
             res.add(nums[maxIndex]);
             maxIndex = parents[maxIndex];

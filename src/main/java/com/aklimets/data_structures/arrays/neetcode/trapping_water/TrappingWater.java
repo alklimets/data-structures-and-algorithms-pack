@@ -1,5 +1,7 @@
 package com.aklimets.data_structures.arrays.neetcode.trapping_water;
 
+import java.util.Stack;
+
 public class TrappingWater {
 
     /*
@@ -63,8 +65,28 @@ public class TrappingWater {
         return water;
     }
 
+    public int trap3(int[] height) {
+        Stack<Integer> stack = new Stack<>();
+        int water = 0;
+        for (int i = 0; i < height.length; i++) {
+            while (!stack.isEmpty() && height[stack.peek()] < height[i]) {
+                int bottom = stack.pop();
+                if (stack.isEmpty()) break;
+
+                int left = stack.peek();
+                int width = i - left - 1;
+                int h = Math.min(height[left], height[i]) - height[bottom];
+                water += width * h;
+            }
+            stack.push(i);
+        }
+        return water;
+    }
+
     public static void main(String[] args) {
         System.out.println(new TrappingWater().trap(new int[] {0,2,0,3,1,0,1,3,2,1}));
+        System.out.println(new TrappingWater().trap2(new int[] {0,2,0,3,1,0,1,3,2,1}));
+        System.out.println(new TrappingWater().trap3(new int[] {0,2,0,3,1,0,1,3,2,1}));
     }
 
 }

@@ -55,7 +55,7 @@ public class BestMeetingPoint {
         System.out.println(new BestMeetingPoint().minTotalDistance(new int[][]{
                 {1, 0, 0, 0, 1},
                 {0, 0, 0, 0, 0},
-                {0, 1, 0, 0, 1}
+                {1, 0, 0, 0, 1}
         }));
     }
 }
