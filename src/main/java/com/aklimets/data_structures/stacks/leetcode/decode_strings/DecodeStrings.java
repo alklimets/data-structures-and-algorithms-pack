@@ -42,9 +42,7 @@ public class DecodeStrings {
                 }
                 stack.pop();
                 int amount = Integer.parseInt(stack.pop());
-                for (int i = 0; i < amount; i++) {
-                    stack.push(temp);
-                }
+                stack.push(temp.repeat(amount));
             } else if ('0' <= ch && ch <= '9') {
                 num += String.valueOf(ch);
             } else if (ch == '[') {
@@ -55,14 +53,11 @@ public class DecodeStrings {
                 stack.push(String.valueOf(ch));
             }
         }
-        String res = "";
-        while (!stack.isEmpty()) {
-            res = stack.pop() + res;
-        }
-        return res;
+        return String.join("", stack);
     }
 
     public static void main(String[] args) {
         System.out.println(new DecodeStrings().decodeString("10[leet]"));
+        System.out.println(new DecodeStrings().decodeString("3[a]2[bc]"));
     }
 }
