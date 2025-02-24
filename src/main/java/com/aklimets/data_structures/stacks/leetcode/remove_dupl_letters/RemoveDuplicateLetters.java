@@ -42,4 +42,8 @@ public class RemoveDuplicateLetters {
         }
         return String.join("", stack.stream().map(i -> String.valueOf((char)('a' + i))).toList());
     }
+
+    public static void main(String[] args) {
+        System.out.println(new RemoveDuplicateLetters().removeDuplicateLetters("cacbca"));
+    }
 }
