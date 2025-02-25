@@ -49,9 +49,26 @@ public class CoinsChange {
         return dp[coins.length][amount] == 1_000_000 ? -1 : dp[coins.length][amount];
     }
 
+    public int coinChange3(int[] coins, int amount) {
+        int[] dp = new int[amount + 1];
+        Arrays.fill(dp, 1_000_000);
+        dp[0] = 0;
+        for (int j = 1; j <= amount; j++) {
+            for (int coin : coins) {
+                if (j >= coin) {
+                    dp[j] = Math.min(dp[j], 1 + dp[j - coin]);
+                }
+            }
+        }
+        return dp[amount] == 1_000_000 ? -1 : dp[amount];
+    }
+
     public static void main(String[] args) {
         System.out.println(new CoinsChange().coinChange2(new int[]{1, 5, 10, 2}, 27));
-        System.out.println(new CoinsChange().coinChange(new int[]{1, 2}, 6));
+        System.out.println(new CoinsChange().coinChange2(new int[]{1, 2}, 6));
         System.out.println(new CoinsChange().coinChange2(new int[]{2}, 3));
+        System.out.println(new CoinsChange().coinChange3(new int[]{1, 5, 10, 2}, 27));
+        System.out.println(new CoinsChange().coinChange3(new int[]{1, 2}, 6));
+        System.out.println(new CoinsChange().coinChange3(new int[]{2}, 3));
     }
 }
