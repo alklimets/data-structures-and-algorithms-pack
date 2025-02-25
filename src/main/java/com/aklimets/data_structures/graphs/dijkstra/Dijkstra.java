@@ -1,5 +1,7 @@
 package com.aklimets.data_structures.graphs.dijkstra;
 
+import org.apache.commons.lang3.tuple.Pair;
+
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -80,5 +82,57 @@ public class Dijkstra {
         path.append(start);
 
         return path.reverse().toString();
+    }
+
+    public String findShortestPath2(Map<String, List<Pair<String, Integer>>> graph, String start, String end) {
+        if (start.equals(end)) return start;
+        Map<String, String> parents = new HashMap<>();
+        Map<String, Integer> weights = graph.keySet().stream().collect(Collectors.toMap(Function.identity(), i -> Integer.MAX_VALUE));
+
+        Queue<Pair<String, Integer>> queue = new PriorityQueue<>((a, b) -> a.getValue() - b.getValue());
+        Set<String> visited = new HashSet<>();
+        queue.offer(Pair.of(start, 0));
+        weights.put(start, 0);
+
+        while (!queue.isEmpty()) {
+            Pair<String, Integer> poll = queue.poll();
+            String parent = poll.getKey();
+            int weight = poll.getValue();
+
+            if (!visited.add(parent)) continue;
+
+            for (Pair<String, Integer> relativePair : graph.getOrDefault(parent, List.of())) {
+                String relative = relativePair.getKey();
+                int relativeWeight = relativePair.getValue();
+
+                if (weight + relativeWeight < weights.getOrDefault(relative, Integer.MAX_VALUE)) {
+                    weights.put(relative, weight + relativeWeight);
+                    queue.offer(Pair.of(relative, weight + relativeWeight));
+                    parents.put(relative, parent);
+                }
+            }
+        }
+
+        LinkedList<String> result = new LinkedList<>();
+        while (end != null) {
+            result.addFirst(end);
+            end = parents.get(end);
+        }
+
+        return String.join("->", result);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new Dijkstra().findShortestPath2(
+                Map.of(
+                        "A", List.of(Pair.of("B", 4), Pair.of("C", 2)),
+                        "B", List.of(Pair.of("D", 2), Pair.of("E", 3), Pair.of("C", 3)),
+                        "C", List.of(Pair.of("B", 1), Pair.of("D", 4), Pair.of("E", 5)),
+                        "E", List.of(Pair.of("D", 1)),
+                        "D", List.of()
+                ),
+                "A",
+                "E"
+        ));
     }
 }
