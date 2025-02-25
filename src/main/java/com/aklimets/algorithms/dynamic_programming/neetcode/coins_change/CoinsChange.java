@@ -51,7 +51,7 @@ public class CoinsChange {
 
     public int coinChange3(int[] coins, int amount) {
         int[] dp = new int[amount + 1];
-        Arrays.fill(dp, 1_000_000);
+        Arrays.fill(dp, Integer.MAX_VALUE);
         dp[0] = 0;
         for (int j = 1; j <= amount; j++) {
             for (int coin : coins) {
@@ -60,7 +60,7 @@ public class CoinsChange {
                 }
             }
         }
-        return dp[amount] == 1_000_000 ? -1 : dp[amount];
+        return dp[amount] == Integer.MAX_VALUE ? -1 : dp[amount];
     }
 
     public static void main(String[] args) {
