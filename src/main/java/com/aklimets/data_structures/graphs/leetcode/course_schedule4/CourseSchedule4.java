@@ -41,6 +41,7 @@ public class CourseSchedule4 {
     */
 
     Map<Integer, Set<Integer>> memo = new HashMap<>();
+
     public List<Boolean> checkIfPrerequisite(int numCourses, int[][] prerequisites, int[][] queries) {
         List<Boolean> res = new ArrayList<>();
         Map<Integer, List<Integer>> graph = new HashMap<>();
@@ -104,5 +105,9 @@ public class CourseSchedule4 {
             res.add(prereq.getOrDefault(query[1], new HashSet<>()).contains(query[0]));
         }
         return res;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new CourseSchedule4().checkIfPrerequisite2(3, new int[][]{{0, 1}, {1, 2}}, new int[][]{{0, 2}, {2, 0}}));
     }
 }

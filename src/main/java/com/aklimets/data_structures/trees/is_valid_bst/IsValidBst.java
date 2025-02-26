@@ -54,4 +54,16 @@ public class IsValidBst {
         }
         return false;
     }
+
+
+    // O(n)
+    public boolean isValidBST2(TreeNode root) {
+        return validate(root, (long) Integer.MIN_VALUE - 1,  (long) Integer.MAX_VALUE + 1);
+    }
+
+    boolean validate(TreeNode root, long min, long max) {
+        if (root == null) return true;
+        if (root.val <= min || root.val >= max) return false;
+        return validate(root.left, min, root.val) && validate(root.right, root.val, max);
+    }
 }
