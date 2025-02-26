@@ -58,6 +58,7 @@ public class BuildTreeFromTraversals {
     }
 
     public static void main(String[] args) {
-        new BuildTreeFromTraversals().buildTree(new int[] {5,3,1,2,4,6,7}, new int[] {1,2,3,4,5,6,7});
+        TreeNode treeNode = new BuildTreeFromTraversals().buildTree(new int[]{5, 3, 1, 2, 4, 6, 7}, new int[]{1, 2, 3, 4, 5, 6, 7});
+        System.out.println(treeNode);
     }
 }
