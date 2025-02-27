@@ -58,6 +58,6 @@ public class LongestDiverseString {
     }
 
     public static void main(String[] args) {
-        System.out.println(new LongestDiverseString().longestDiverseString(7,0,0));
+        System.out.println(new LongestDiverseString().longestDiverseString(7,1,1));
     }
 }

@@ -58,4 +58,8 @@ public class TaskScheduler {
         return time;
 
     }
+
+    public static void main(String[] args) {
+        System.out.println(new TaskScheduler().leastInterval(new char[] {'A', 'A', 'A', 'B', 'C'}, 3));
+    }
 }

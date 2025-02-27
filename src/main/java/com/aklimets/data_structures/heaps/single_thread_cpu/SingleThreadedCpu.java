@@ -83,4 +83,8 @@ public class SingleThreadedCpu {
         }
         return result;
     }
+
+    public static void main(String[] args) {
+        System.out.println(Arrays.toString(new SingleThreadedCpu().getOrder(new int[][]{{1, 2}, {2, 4}, {3, 2}, {4, 1}})));
+    }
 }

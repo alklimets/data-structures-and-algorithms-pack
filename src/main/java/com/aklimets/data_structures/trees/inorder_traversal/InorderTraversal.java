@@ -1,4 +1,4 @@
-package com.aklimets.data_structures.trees.inorder_travesal;
+package com.aklimets.data_structures.trees.inorder_traversal;
 
 import com.aklimets.data_structures.trees.TreeNode;
 
