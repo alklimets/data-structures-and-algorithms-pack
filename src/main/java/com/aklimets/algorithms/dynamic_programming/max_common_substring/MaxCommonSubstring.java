@@ -1,6 +1,6 @@
 package com.aklimets.algorithms.dynamic_programming.max_common_substring;
 
-public class MaxCommonSubstring {
+public class  MaxCommonSubstring {
 
     public static String solve(String a, String b) {
         String res = "";

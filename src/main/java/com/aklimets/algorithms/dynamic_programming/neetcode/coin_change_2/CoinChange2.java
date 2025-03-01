@@ -75,6 +75,8 @@ public class CoinChange2 {
 
     public static void main(String[] args) {
 //        System.out.println(new CoinChange2().change(7, new int[]{2, 4}));
+        System.out.println(new CoinChange2().change(7, new int[]{2, 3, 4, 1}));
         System.out.println(new CoinChange2().change2(7, new int[]{2, 3, 4, 1}));
+        System.out.println(new CoinChange2().change2(7, new int[]{1,2,5}));
     }
 }

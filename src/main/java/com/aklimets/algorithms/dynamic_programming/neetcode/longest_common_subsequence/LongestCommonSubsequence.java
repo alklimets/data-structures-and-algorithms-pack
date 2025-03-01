@@ -51,6 +51,7 @@ public class LongestCommonSubsequence {
 
     public static void main(String[] args) {
         System.out.println(new LongestCommonSubsequence().longestCommonSubsequence("aa", "aaa"));
+        System.out.println(new LongestCommonSubsequence().longestCommonSubsequence("bsbininm", "jmjkbkjkv"));
     }
 
 }

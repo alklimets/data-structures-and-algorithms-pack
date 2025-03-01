@@ -121,7 +121,7 @@ public class PartitionEqualsSubset {
     }
 
     public static void main(String[] args) {
-        System.out.println(new PartitionEqualsSubset().canPartitionDP(new int[] {8, 7, 4, 5}));
+        System.out.println(new PartitionEqualsSubset().canPartitionDP(new int[] {4, 7, 4, 5}));
     }
 
 }
