@@ -69,7 +69,7 @@ public class FlattenDll {
         Node copy = head;
         while (copy != null) {
             Node next = copy.next;
-            Node child = flat(copy.child);
+            Node child = flat2(copy.child);
             copy.child = null;
             while (child != null) {
                 copy.next = child;

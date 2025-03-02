@@ -42,6 +42,7 @@ public class ThirdDistinctMax {
     */
 
     public int thirdMax(int[] nums) {
+        if(nums.length == 0) return -1;
         Set<Integer> visited = new HashSet<>();
         Integer max = null, max1 = null, max2 = null;
         for (int num : nums) {
