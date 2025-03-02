@@ -60,7 +60,8 @@ public class AlienDictionary {
     }
 
     public static void main(String[] args) {
-        System.out.println(new AlienDictionary().solution(List.of("wrt", "wrf", "er", "ett", "rftt")));
-        System.out.println(new AlienDictionary().solution(List.of("abc", "abd", "ddd", "ccc")));
+//        System.out.println(new AlienDictionary().solution(List.of("wrt", "wrf", "er", "ett", "rftt")));
+//        System.out.println(new AlienDictionary().solution(List.of("abc", "abd", "ddd", "ccc")));
+        System.out.println(new AlienDictionary().solution(List.of("z")));
     }
 }
