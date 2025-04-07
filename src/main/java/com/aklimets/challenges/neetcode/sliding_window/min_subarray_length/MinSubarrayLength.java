@@ -48,4 +48,27 @@ public class MinSubarrayLength {
 
         return min == Integer.MAX_VALUE ? 0 : min;
     }
+
+    public int minSubArrayLen2(int target, int[] nums) {
+        int min = Integer.MAX_VALUE;
+        int current = 0;
+        int l = 0, r = 0;
+        while (r <= nums.length) {
+            while (current >= target) {
+                min = Math.min(min, r - l);
+                current -= nums[l++];
+            }
+            if (r < nums.length) {
+                current += nums[r];
+            }
+            r++;
+
+        }
+        return min == Integer.MAX_VALUE ? 0 : min;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new MinSubarrayLength().minSubArrayLen(7, new int[] {2,3,1,2,4,3}));
+        System.out.println(new MinSubarrayLength().minSubArrayLen2(7, new int[] {2,3,1,2,4,3}));
+    }
 }
