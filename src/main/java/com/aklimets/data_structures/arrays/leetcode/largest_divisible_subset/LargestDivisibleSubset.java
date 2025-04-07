@@ -25,7 +25,7 @@ public class LargestDivisibleSubset {
         Constraints:
 
         1 <= nums.length <= 1000
-        1 <= nums[i] <= 2 * 109
+        1 <= nums[i] <= 2 * 10^9
         All the integers in nums are unique.
     */
 
@@ -39,7 +39,7 @@ public class LargestDivisibleSubset {
 
         int maxIndex = 0;
         int maxValue = 0;
-        for(int i = 1; i < nums.length; i++) {
+        for(int i = 0; i < nums.length; i++) {
             int maxJ = -1;
             int maxVal = 0;
             for (int j = i - 1; j >= 0; j--) {

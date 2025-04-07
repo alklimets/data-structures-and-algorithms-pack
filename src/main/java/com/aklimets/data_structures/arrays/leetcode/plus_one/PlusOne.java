@@ -43,14 +43,10 @@ public class PlusOne {
             if (digits[i] == 10) {
                 digits[i] = 0;
             } else {
-                add = 0;
-                break;
+                return digits;
             }
         }
 
-        if (add == 0) {
-            return digits;
-        }
         int[] res = new int[digits.length + 1];
         res[0] = 1;
         return res;
