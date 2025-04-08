@@ -3,7 +3,7 @@ package com.aklimets.challenges.neetcode.intervals.summary_ranges;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SummaryRanges {
+public class  SummaryRanges {
 
     /*
         You are given a sorted unique integer array nums.
