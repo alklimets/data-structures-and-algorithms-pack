@@ -58,9 +58,7 @@ public class CombinationSum3 {
         for (int i = start; i <= 9; i++) {
             if (i <= target) {
                 curr.add(i);
-                used++;
-                backtrack(i + 1, used, k, target - i, curr);
-                used--;
+                backtrack(i + 1, used + 1, k, target - i, curr);
                 curr.removeLast();
             }
         }

@@ -47,6 +47,13 @@ public class CombinationSum {
         return res;
     }
 
+    public List<List<Integer>> combinationSum2(int[] nums, int target) {
+        List<List<Integer>> res = new ArrayList<>();
+        LinkedList<Integer> curr = new LinkedList<>();
+        backtrack2(nums, target, res, curr, 0);
+        return res;
+    }
+
     private void backtrack(int[] nums, int target,  List<List<Integer>> res, LinkedList<Integer> curr, int i) {
         if (target == 0) {
             res.add(new ArrayList<>(curr));
@@ -63,7 +70,25 @@ public class CombinationSum {
         backtrack(nums, target, res, curr, i + 1);
     }
 
+    private void backtrack2(int[] nums, int target,  List<List<Integer>> res, LinkedList<Integer> curr, int i) {
+        if (target == 0) {
+            res.add(new ArrayList<>(curr));
+            return;
+        }
+
+        if (target < 0) {
+            return;
+        }
+
+        for (int j = i; j < nums.length; j++) {
+            curr.add(nums[j]);
+            backtrack2(nums, target - nums[j], res, curr, j);
+            curr.removeLast();
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println(new CombinationSum().combinationSum(new int[] {2,5,6,9}, 9));
+        System.out.println(new CombinationSum().combinationSum2(new int[] {2,5,6,9}, 9));
     }
 }
