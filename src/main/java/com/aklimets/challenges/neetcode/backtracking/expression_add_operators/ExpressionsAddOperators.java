@@ -46,9 +46,7 @@ public class ExpressionsAddOperators {
             return;
         }
 
-        for (int i = start; i < num.length(); i++) {
-            if (i != start && num.charAt(start) == '0') return;
-
+        for (int i = start; i < (num.charAt(start) == '0' ? start + 1 : num.length()); i++) {
             long number = Long.parseLong(num.substring(start, i + 1));
             if (start == 0) {
                 backtrack(num, target, "" + number, number, number, i + 1);
@@ -58,5 +56,9 @@ public class ExpressionsAddOperators {
                 backtrack(num, target, path + "*" + number, current - prev + number * prev, number * prev, i + 1);
             }
         }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new ExpressionsAddOperators().addOperators("105", 5));
     }
 }
