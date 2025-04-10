@@ -8,6 +8,14 @@ import java.util.stream.Collectors;
 
 public class Dijkstra {
 
+    /*
+        O((V + E) * log V).
+
+        You only add to the heap when the distance to a node is updated (not every time you process a node).
+        The priority queue (heap) is maintained throughout the algorithm, but it's only updated when necessary (when a node's distance changes).
+        This is why Dijkstra’s complexity is O((V + E) * log V) and not O(V²) (unless you use a simple array, in which case it becomes O(V²)).
+    */
+
     public Map<String, Integer> search(Map<String, Map<String, Integer>> graph, String start) {
         Map<String, Integer> result = new HashMap<>();
         result.put(start, 0);

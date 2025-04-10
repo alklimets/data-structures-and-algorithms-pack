@@ -45,11 +45,9 @@ public class MakeSquare {
 
             sum += matchsticks[i];
             visited[i] = true;
-            used++;
-            if (dfs(matchsticks, sum, used, i + 1, target, visited)) return true;
+            if (dfs(matchsticks, sum, used + 1, i + 1, target, visited)) return true;
             sum -= matchsticks[i];
             visited[i] = false;
-            used--;
             while (i + 1 < matchsticks.length && matchsticks[i] == matchsticks[i + 1]) i++;
         }
         return false;
