@@ -37,12 +37,11 @@ public class ShortestPathMatrix {
         if (grid[0][0] != 0) return -1;
         int rows = grid.length;
         int cols = grid[0].length;
-        boolean[][] visited = new boolean[rows][cols];
         int[][] dirs = new int[][] {{1,0}, {-1, 0}, {0, 1}, {0, -1}, {1, 1}, {1, -1}, {-1, 1}, {-1,-1}};
 
-        visited[0][0] = true;
         Queue<int[]> queue = new LinkedList<>();
         queue.offer(new int[] {0, 0});
+        grid[0][0] = 1;
 
         int steps = 0;
         while (!queue.isEmpty()) {
@@ -58,9 +57,9 @@ public class ShortestPathMatrix {
                     int ii = i + dir[0];
                     int jj = j + dir[1];
 
-                    if (ii >= 0 && jj >= 0 && ii < rows && jj < cols && grid[ii][jj] == 0 && !visited[ii][jj]) {
+                    if (ii >= 0 && jj >= 0 && ii < rows && jj < cols && grid[ii][jj] == 0) {
                         queue.offer(new int[]{ii, jj});
-                        visited[ii][jj] = true;
+                        grid[ii][jj] = 1;
                     }
                 }
             }
@@ -68,5 +67,9 @@ public class ShortestPathMatrix {
         }
 
         return -1;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new ShortestPathMatrix().shortestPathBinaryMatrix(new int[][]{{0,0,0}, {1,1,0}, {1,1,0}}));
     }
 }
