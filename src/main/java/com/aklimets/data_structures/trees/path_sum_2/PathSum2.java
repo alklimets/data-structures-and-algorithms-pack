@@ -37,26 +37,27 @@ public class PathSum2 {
     List<List<Integer>> result = new ArrayList<>();
 
     public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
-        dfs(root, targetSum, new LinkedList<>(), 0);
+        dfs(root, targetSum, new LinkedList<>());
         return result;
     }
 
-    void dfs(TreeNode root, int targetSum, LinkedList<Integer> current, int currentSum) {
+    void dfs(TreeNode root, int targetSum, LinkedList<Integer> current) {
         if (root == null) {
             return;
         }
 
-        currentSum += root.val;
+        targetSum -= root.val;
         current.add(root.val);
 
-        if (currentSum == targetSum && root.left == null && root.right == null) {
+        if (targetSum == 0 && root.left == null && root.right == null) {
             result.add(new ArrayList<>(current));
             current.removeLast();
             return;
         }
 
-        dfs(root.left, targetSum, current, currentSum);
-        dfs(root.right, targetSum, current, currentSum);
+        dfs(root.left, targetSum, current);
+        dfs(root.right, targetSum, current);
+
         current.removeLast();
     }
 }

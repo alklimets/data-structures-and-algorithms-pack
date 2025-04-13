@@ -43,9 +43,8 @@ public class PrefixTree {
     }
 
     public void insert(String word) {
-        char[] chars = word.toCharArray();
         TrieNode current = head;
-        for (char ch : chars) {
+        for (char ch : word.toCharArray()) {
             if (!current.nodes.containsKey(ch)) {
                 TrieNode node = new TrieNode();
                 current.nodes.put(ch, node);
@@ -56,9 +55,8 @@ public class PrefixTree {
     }
 
     public boolean search(String word) {
-        char[] chars = word.toCharArray();
         TrieNode current = head;
-        for (char ch : chars) {
+        for (char ch : word.toCharArray()) {
             if (!current.nodes.containsKey(ch)) {
                 return false;
             }
@@ -68,9 +66,8 @@ public class PrefixTree {
     }
 
     public boolean startsWith(String prefix) {
-        char[] chars = prefix.toCharArray();
         TrieNode current = head;
-        for (char ch : chars) {
+        for (char ch : prefix.toCharArray()) {
             if (!current.nodes.containsKey(ch)) {
                 return false;
             }

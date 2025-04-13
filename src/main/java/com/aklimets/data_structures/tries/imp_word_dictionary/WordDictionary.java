@@ -58,21 +58,19 @@ public class WordDictionary {
             if (word.length == index) {
                 return this.isWord;
             }
-            boolean result = false;
             char ch = word[index];
             if (ch == '.') {
                 for (TrieNode node : this.nodes) {
                     if (node != null) {
-                        result |= node.search(word, index + 1);
-                        if (result) return true;
+                        if (node.search(word, index + 1)) return true;
                     }
                 }
             } else {
                 if (nodes[ch - 'a'] != null) {
-                    result |= nodes[ch - 'a'].search(word, index + 1);
+                    return nodes[ch - 'a'].search(word, index + 1);
                 }
             }
-            return result;
+            return false;
         }
     }
 
