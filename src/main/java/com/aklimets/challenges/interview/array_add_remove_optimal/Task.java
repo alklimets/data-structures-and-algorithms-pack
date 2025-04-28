@@ -68,54 +68,107 @@ public class Task {
     }
 
     public static List<Integer> processArray(int[] input) {
-        BucketList bucketList = new BucketList();
+        MyLinkedList myLinkedList = new MyLinkedList();
         for (int val : input) {
             if (val < 0) {
-                bucketList.add(val);
+                myLinkedList.insert(val);
             } else if (val > 0) {
-                bucketList.remove(val);
+                myLinkedList.remove(val);
             }
         }
-        return bucketList.combine();
+        return myLinkedList.combine();
+    }
+
+    static class Node {
+        int value;
+        Node next;
+        Node prev;
+        Node(int value) {
+            this.value = value;
+        }
+    }
+
+    static class MyLinkedList {
+        Node head;
+        Node tail;
+        int size;
+
+        MyLinkedList() {
+            head = new Node(-1);
+            tail = new Node(-1);
+            head.next = tail;
+            tail.prev = head;
+        }
+
+        void insert(int value) {
+            Node newNode = new Node(value);
+            newNode.prev = tail.prev;
+            tail.prev.next = newNode;
+            tail.prev = newNode;
+            newNode.next = tail;
+            size++;
+        }
+
+        void remove(int index) {
+            if (index <= size) {
+                Node copy = head;
+                for (int i = 0; i < index; i++) {
+                    copy = copy.next;
+                }
+                copy.prev.next = copy.next;
+                copy.next.prev = copy.prev;
+                size--;
+            }
+        }
+
+        List<Integer> combine() {
+            List<Integer> result = new ArrayList<>(size);
+            Node copy = head.next;
+            while (copy != tail) {
+                result.add(copy.value);
+                copy = copy.next;
+            }
+            return result;
+        }
     }
 
     public static void main(String[] args) {
 //        System.out.println(Task.processArray(new int[] {-1,-2,-3,4}));
-        System.out.println(Task.processArrayBF(new int[]{-1, -2, -3, 2, 3, 0}));
-        System.out.println(Task.processArray(new int[]{-1, -2, -3, 2, 3, 0}));
+//        System.out.println(Task.processArrayBF(new int[]{-1, -2, -3, 2, 3, 0}));
+//        System.out.println(Task.processArray(new int[]{-1, -2, -3, 2, 3, 0}));
 //        System.out.println(Task.processArrayBF(new int[]{-1, -2, -3, 2, -1, -2, -1, 5, 10, -1, -2, -5, 1, 0, 0, -2, -5, 12, -1}));
-//        Random random = new Random();
-//        int[] input = Stream.generate(() -> random.nextInt(-255, 255)).limit(1_000_000).mapToInt(i -> i).toArray();
-//        int pos = 0;
-//        int zero = 0;
-//        int neg = 0;
-//        for (int val : input) {
-//            if (val < 0) {
-//                neg++;
-//            } else if (val > 0) {
-//                pos++;
-//            } else {
-//                zero++;
-//            }
-//        }
-//
-//        System.out.println(pos + " " + zero + " " + neg);
-//
-//        Instant start = Instant.now();
-//        Task.processArrayBF(input);
-//        Instant end = Instant.now();
-//
-//        long millisDiff = ChronoUnit.MILLIS.between(start, end);
-//        System.out.println("Time difference: " + millisDiff + " milliseconds");
-//        System.out.println(counter);
-//        counter = 0;
-//        start = Instant.now();
-//        Task.processArray(input);
-//        end = Instant.now();
-//
-//        millisDiff = ChronoUnit.MILLIS.between(start, end);
-//        System.out.println("Time difference: " + millisDiff + " milliseconds");
-//        System.out.println(counter);
+        Random random = new Random();
+        int[] input = Stream.generate(() -> random.nextInt(-255, 255)).limit(1_000_000).mapToInt(i -> i).toArray();
+        int pos = 0;
+        int zero = 0;
+        int neg = 0;
+        for (int val : input) {
+            if (val < 0) {
+                neg++;
+            } else if (val > 0) {
+                pos++;
+            } else {
+                zero++;
+            }
+        }
+
+        System.out.println(pos + " " + zero + " " + neg);
+
+        Instant start = Instant.now();
+        Task.processArrayBF(input);
+        Instant end = Instant.now();
+
+        long millisDiff = ChronoUnit.MILLIS.between(start, end);
+        System.out.println("Time difference: " + millisDiff + " milliseconds");
+        System.out.println(counter);
+        counter = 0;
+        start = Instant.now();
+        Task.processArray(input);
+        end = Instant.now();
+
+        millisDiff = ChronoUnit.MILLIS.between(start, end);
+        System.out.println("Time difference: " + millisDiff + " milliseconds");
+        System.out.println(counter);
 
     }
 }
