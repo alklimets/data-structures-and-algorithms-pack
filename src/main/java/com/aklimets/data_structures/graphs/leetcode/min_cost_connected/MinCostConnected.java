@@ -48,10 +48,14 @@ public class MinCostConnected {
                 }
             }
             result += distances[nextNode];
-            edges++;
             node = nextNode;
+            edges++;
         }
 
         return result;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new MinCostConnected().minCostConnectPoints(new int[][] {{0,0},{2,2},{3,10},{5,2},{7,0}}));
     }
 }
