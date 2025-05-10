@@ -96,4 +96,8 @@ public class MeetingRooms3 {
         return index;
 
     }
+
+    public static void main(String[] args) {
+        System.out.println(new MeetingRooms3().mostBooked(4, new int[][] {{18,19},{3,12},{17,19},{2,13},{7,10}}));
+    }
 }
