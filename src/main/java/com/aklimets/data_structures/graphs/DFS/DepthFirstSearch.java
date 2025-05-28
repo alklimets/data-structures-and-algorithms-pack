@@ -1,31 +1,25 @@
 package com.aklimets.data_structures.graphs.DFS;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class DepthFirstSearch {
 
     public boolean hasCycle(Map<String, List<String>> graph, String node) {
-        return hasCycle(graph, node, new LinkedList<>());
+        return hasCycle(graph, node, new HashSet<>());
     }
 
-    private boolean hasCycle(Map<String, List<String>> graph, String node, LinkedList<String> stack) {
-        if (!graph.containsKey(node)) {
-            return false;
-        }
-        if (stack.contains(node)){
+    private boolean hasCycle(Map<String, List<String>> graph, String node, Set<String> current) {
+        if (current.contains(node)){
             return true;
         }
 
-        List<String> relatives = graph.get(node);
-        stack.addLast(node);
-        for (String relative : relatives) {
-            if (hasCycle(graph, relative, stack)) {
+        current.add(node);
+        for (String relative : graph.getOrDefault(node, List.of())) {
+            if (hasCycle(graph, relative, current)) {
                 return true;
             }
         }
-        stack.removeLast();
+        current.remove(node);
         return false;
 
     }

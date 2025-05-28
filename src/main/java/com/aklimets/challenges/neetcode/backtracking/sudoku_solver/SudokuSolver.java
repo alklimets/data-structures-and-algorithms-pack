@@ -24,6 +24,15 @@ public class SudokuSolver {
         board[i].length == 9
         board[i][j] is a digit or '.'.
         It is guaranteed that the input board has only one solution.
+
+        /////////////
+        if [ -z "$1" ]; then
+            echo "Usage: $0 <input_string>"
+            exit 1
+        fi
+
+        echo -n "$1" | shasum -a 256 | awk '{print substr($1, 4, 22)}'
+        ///////////
     */
 
     boolean[][] rows = new boolean[9][9];
